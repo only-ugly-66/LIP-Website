@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIP Services — AI Chat Agent Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      min-height: 100vh;
+    }
+
+    /* ── Demo backdrop ── */
+    .demo-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,70,229,0.25) 0%, transparent 70%), #0f0f1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .demo-text {
+      text-align: center;
+      max-width: 520px;
+      padding: 40px 24px;
+    }
+
+    .demo-badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.35);
+      color: #a5b4fc;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    .demo-text h1 {
+      font-size: 38px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+
+    .demo-text h1 span { color: #6366f1; }
+
+    .demo-text .sub {
+      font-size: 16px;
+      color: #818cf8;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .demo-text p {
+      font-size: 15px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .demo-arrow {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .demo-arrow::after {
+      content: '↘';
+      font-size: 20px;
+      color: #6366f1;
+    }
+
+    /* ══════════════════════════════════════════════
+       CHAT WIDGET
+    ══════════════════════════════════════════════ */
+    #lip-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Launcher ── */
+    #lip-btn {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #4f46e5;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(79,70,229,0.55);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    #lip-btn:hover { transform: scale(1.07); box-shadow: 0 6px 30px rgba(79,70,229,0.65); }
+    #lip-btn svg { width: 27px; height: 27px; fill: white; transition: opacity 0.15s; }
+    #lip-btn .ico-chat { display: block; }
+    #lip-btn .ico-close { display: none; }
+    #lip-btn.open .ico-chat { display: none; }
+    #lip-btn.open .ico-close { display: block; }
+
+    .notif-dot {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      width: 15px;
+      height: 15px;
+      background: #10b981;
+      border-radius: 50%;
+      border: 2.5px solid #0f0f1a;
+      display: none;
+      animation: dotpulse 2.2s infinite;
+    }
+
+    @keyframes dotpulse {
+      0%, 100% { transform: scale(1); }
+      50%  { transform: scale(1.25); }
+    }
+
+    /* ── Panel ── */
+    #lip-panel {
+      position: absolute;
+      bottom: 76px;
+      right: 0;
+      width: 384px;
+      height: 568px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform-origin: bottom right;
+      transform: scale(0.82) translateY(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s;
+    }
+
+    #lip-panel.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ── Setup screen ── */
+    #lip-setup {
+      position: absolute;
+      inset: 0;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 28px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    #lip-setup.hidden { display: none; }
+
+    .setup-icon { font-size: 40px; margin-bottom: 16px; }
+
+    #lip-setup h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f0f1a;
+      margin-bottom: 8px;
+    }
+
+    #lip-setup p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .setup-field {
+      width: 100%;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      color: #0f0f1a;
+      margin-bottom: 10px;
+      transition: border-color 0.15s;
+    }
+
+    .setup-field:focus { border-color: #4f46e5; }
+
+    .setup-field::placeholder { color: #94a3b8; }
+
+    #setup-go {
+      width: 100%;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-top: 4px;
+    }
+
+    #setup-go:hover { background: #6366f1; }
+
+    .setup-note {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    .lip-hdr {
+      background: #0f0f1a;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .hdr-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f46e5, #818cf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .hdr-info { flex: 1; min-width: 0; }
+
+    .hdr-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .hdr-status {
+      font-size: 12px;
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .hdr-status::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hdr-brand {
+      font-size: 11px;
+      font-weight: 700;
+      color: #6366f1;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Messages ── */
+    .lip-msgs {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f8fafc;
+      scroll-behavior: smooth;
+    }
+
+    .lip-msgs::-webkit-scrollbar { width: 4px; }
+    .lip-msgs::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 2px; }
+
+    .msg { display: flex; gap: 8px; align-items: flex-end; }
+    .msg.user { flex-direction: row-reverse; }
+
+    .msg-av {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f46e5, #818cf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .msg-body { max-width: 80%; display: flex; flex-direction: column; }
+    .msg.user .msg-body { align-items: flex-end; }
+
+    .msg-bbl {
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    .msg.agent .msg-bbl {
+      background: white;
+      color: #1a1a2e;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+
+    .msg.user .msg-bbl {
+      background: #4f46e5;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg-time {
+      font-size: 10px;
+      color: #94a3b8;
+      margin-top: 4px;
+      padding: 0 2px;
+    }
+
+    /* ── Book button ── */
+    .book-cta {
+      display: inline-block;
+      margin-top: 8px;
+      background: #4f46e5;
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 10px;
+      transition: background 0.15s;
+      width: 100%;
+      text-align: center;
+    }
+
+    .book-cta:hover { background: #6366f1; }
+
+    /* ── Quick replies ── */
+    .qr-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .qr {
+      background: white;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #4f46e5;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .qr:hover { background: #4f46e5; color: white; border-color: #4f46e5; }
+
+    /* ── Typing ── */
+    .typing-wrap { display: flex; gap: 8px; align-items: flex-end; }
+
+    .typing-bbl {
+      background: white;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      padding: 13px 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .td {
+      width: 7px;
+      height: 7px;
+      background: #94a3b8;
+      border-radius: 50%;
+      animation: bounce 1.3s infinite;
+    }
+
+    .td:nth-child(2) { animation-delay: 0.18s; }
+    .td:nth-child(3) { animation-delay: 0.36s; }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+      30% { transform: translateY(-7px); opacity: 1; }
+    }
+
+    /* ── Input ── */
+    .lip-input-wrap {
+      padding: 12px 14px;
+      border-top: 1px solid #f0f0f0;
+      background: white;
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    #lip-input {
+      flex: 1;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      resize: none;
+      min-height: 42px;
+      max-height: 110px;
+      line-height: 1.45;
+      color: #0f0f1a;
+      transition: border-color 0.15s;
+    }
+
+    #lip-input:focus { border-color: #4f46e5; }
+    #lip-input::placeholder { color: #94a3b8; }
+
+    #lip-send {
+      width: 42px;
+      height: 42px;
+      background: #4f46e5;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    #lip-send:hover { background: #6366f1; }
+    #lip-send:active { transform: scale(0.94); }
+    #lip-send:disabled { background: #e2e8f0; cursor: default; }
+    #lip-send svg { width: 18px; height: 18px; fill: white; }
+    #lip-send:disabled svg { fill: #94a3b8; }
+
+    .lip-footer {
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+      padding: 5px 14px 10px;
+      background: white;
+    }
+
+    /* ── Leads button (demo only) ── */
+    #leads-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: rgba(255,255,255,0.06);
+      color: #94a3b8;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 9px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      z-index: 9998;
+      font-family: inherit;
+    }
+
+    #leads-btn:hover { background: rgba(99,102,241,0.15); border-color: #4f46e5; color: #a5b4fc; }
+
+    /* ── Reset key button ── */
+    #reset-btn {
+      position: fixed;
+      bottom: 64px;
+      left: 24px;
+      background: transparent;
+      color: #475569;
+      border: none;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: underline;
+      z-index: 9998;
+    }
+
+    #reset-btn:hover { color: #94a3b8; }
+
+    /* ── Mobile ── */
+    @media (max-width: 460px) {
+      #lip-panel {
+        width: calc(100vw - 16px);
+        height: calc(100dvh - 96px);
+        right: 8px;
+        bottom: 76px;
+        border-radius: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Demo backdrop -->
+<div class="demo-bg">
+  <div class="demo-text">
+    <div class="demo-badge">Live Demo</div>
+    <h1>LIP<span>.</span>Services</h1>
+    <div class="sub">AI Chat Agent</div>
+    <p>This is a live demo of the AI chat widget. Aria is trained on LIP Services — she answers questions, qualifies leads, and guides visitors toward booking a strategy call.</p>
+    <div class="demo-arrow">Click the chat button to start</div>
+  </div>
+</div>
+
+<!-- ═══════ CHAT WIDGET ═══════ -->
+<div id="lip-widget">
+
+  <!-- Panel -->
+  <div id="lip-panel">
+
+    <!-- First-time setup -->
+    <div id="lip-setup">
+      <div class="setup-icon">🤖</div>
+      <h3>Activate AI Chat Agent</h3>
+      <p>Enter your Anthropic API key to power the agent. Stored locally on your device — never sent anywhere else.</p>
+      <input class="setup-field" type="password" id="s-key" placeholder="Anthropic API key (sk-ant-...)">
+      <input class="setup-field" type="url" id="s-booking" value="https://calendar.app.google/oqTcitaDB6RRbLiy5">
+      <button id="setup-go" onclick="initChat()">Activate Agent →</button>
+      <div class="setup-note">For website deployment, the API key moves to a backend server.<br>This setup is for demo and testing only.</div>
+    </div>
+
+    <!-- Header -->
+    <div class="lip-hdr">
+      <div class="hdr-avatar">🤖</div>
+      <div class="hdr-info">
+        <div class="hdr-name">Aria</div>
+        <div class="hdr-status">Online — replies instantly</div>
+      </div>
+      <div class="hdr-brand">LIP Services</div>
+    </div>
+
+    <!-- Messages -->
+    <div class="lip-msgs" id="lip-msgs"></div>
+
+    <!-- Input -->
+    <div class="lip-input-wrap">
+      <textarea id="lip-input" placeholder="Ask me anything..." rows="1"
+        onkeydown="handleKey(event)" oninput="grow(this)"></textarea>
+      <button id="lip-send" onclick="send()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="lip-footer">Powered by Claude AI · LIP Services</div>
+
+  </div>
+
+  <!-- Launcher -->
+  <button id="lip-btn" onclick="togglePanel()">
+    <span class="notif-dot" id="notif"></span>
+    <svg class="ico-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    <svg class="ico-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
+
+</div>
+
+<!-- Demo controls -->
+<button id="leads-btn" onclick="viewLeads()">📋 Captured Leads</button>
+<button id="reset-btn" onclick="resetKey()">Reset API key</button>
+
+<script src="knowledge-base.js"></script>
+<script>
+// ══════════════════════════════════════════════════════
+// Chat-specific persona and style rules
+// Core knowledge lives in knowledge-base.js — edit that
+// file to update services, pricing, or guardrails.
+// ══════════════════════════════════════════════════════
+const CHAT_RULES = `
+## Who you are (chat)
+You are Aria, a warm and helpful AI assistant for LIP Services. Your job is to have a genuine conversation, understand what the visitor's business needs, and help them see if LIP Services is a good fit. You are not a salesperson — you are a knowledgeable friend.
+
+## Conversation approach
+- Find out what kind of business they run early in the conversation — ask naturally, not as a form
+- Understand their biggest challenge: getting leads, converting them, missing calls, too much admin?
+- Match 1 or 2 relevant services to their situation — never list all services unprompted
+- When there is genuine interest, guide them toward booking a free strategy call with Rob
+- If they share their email, acknowledge it warmly
+
+## Chat style rules — always follow
+- Maximum 3 sentences per message. No exceptions.
+- Never use bullet points or numbered lists — write in natural sentences only.
+- One idea per message. If you have two things to say, pick the more important one and let the conversation continue.
+- Warm and conversational. Like a helpful friend, not a salesperson.
+- Plain Australian English. No jargon, no corporate language.
+- Never be pushy.
+
+## If you don't know something
+Say Rob would be the best person to answer that on a call — and offer to help them book one.
+`;
+
+// Build the full system prompt: shared knowledge + chat rules
+const SYSTEM = KNOWLEDGE_BASE + CHAT_RULES;
+
+// ══════════════════════════════════════════════════════
+// State
+// ══════════════════════════════════════════════════════
+let msgs     = [];
+let busy     = false;
+let isOpen   = false;
+let lead     = { name: null, email: null, biz: null, saved: false };
+let apiKey   = localStorage.getItem('lip_key')     || '';
+let bookUrl  = localStorage.getItem('lip_booking') || 'https://calendar.app.google/oqTcitaDB6RRbLiy5';
+let leads    = JSON.parse(localStorage.getItem('lip_leads') || '[]');
+
+// ══════════════════════════════════════════════════════
+// Boot
+// ══════════════════════════════════════════════════════
+window.addEventListener('load', () => {
+  if (apiKey) {
+    document.getElementById('lip-setup').classList.add('hidden');
+    greet();
+  }
+  setTimeout(() => { if (!isOpen) document.getElementById('notif').style.display = 'block'; }, 3500);
+});
+
+function initChat() {
+  const k = document.getElementById('s-key').value.trim();
+  const b = document.getElementById('s-booking').value.trim();
+  if (!k.startsWith('sk-ant-')) { alert('Please enter a valid Anthropic API key (starts with sk-ant-).'); return; }
+  apiKey  = k;
+  bookUrl = b;
+  localStorage.setItem('lip_key', apiKey);
+  localStorage.setItem('lip_booking', bookUrl);
+  document.getElementById('lip-setup').classList.add('hidden');
+  greet();
+}
+
+function resetKey() {
+  if (!confirm('Reset API key? You will need to re-enter it.')) return;
+  localStorage.removeItem('lip_key');
+  localStorage.removeItem('lip_booking');
+  location.reload();
+}
+
+function greet() {
+  addMsg('agent', `G'day! I'm Aria from LIP Services. What brings you here today — are you looking to get more leads, save time on admin, or something else?`, true);
+}
+
+// ══════════════════════════════════════════════════════
+// UI
+// ══════════════════════════════════════════════════════
+function togglePanel() {
+  isOpen = !isOpen;
+  document.getElementById('lip-panel').classList.toggle('open', isOpen);
+  document.getElementById('lip-btn').classList.toggle('open', isOpen);
+  if (isOpen) {
+    document.getElementById('notif').style.display = 'none';
+    setTimeout(() => document.getElementById('lip-input').focus(), 320);
+  }
+}
+
+function addMsg(role, text, showQR = false) {
+  const container = document.getElementById('lip-msgs');
+  const t = new Date().toLocaleTimeString('en-AU', { hour: '2-digit', minute: '2-digit' });
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+
+  const showBook = bookUrl && (
+    /book|strategy call|schedule|calendly/i.test(text)
+  );
+
+  if (role === 'agent') {
+    div.innerHTML = `
+      <div class="msg-av">🤖</div>
+      <div class="msg-body">
+        <div class="msg-bbl">${fmt(text)}</div>
+        ${showBook ? `<a class="book-cta" href="${bookUrl}" target="_blank" rel="noopener">📅 Book a Free Strategy Call →</a>` : ''}
+        ${showQR ? qrHTML() : ''}
+        <span class="msg-time">Aria · ${t}</span>
+      </div>`;
+  } else {
+    div.innerHTML = `
+      <div class="msg-body">
+        <div class="msg-bbl">${fmt(text)}</div>
+        <span class="msg-time">${t}</span>
+      </div>`;
+  }
+
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function qrHTML() {
+  const opts = [
+    'Get more leads',
+    'Too much admin',
+    'Missing calls after hours',
+    'How does pricing work?',
+  ];
+  return `<div class="qr-wrap">${opts.map(o =>
+    `<button class="qr" onclick="useQR(this,'${o.replace(/'/g,"\\'")}')"> ${o}</button>`
+  ).join('')}</div>`;
+}
+
+function useQR(el, text) {
+  el.closest('.qr-wrap').remove();
+  document.getElementById('lip-input').value = text;
+  send();
+}
+
+function showTyping() {
+  const c = document.getElementById('lip-msgs');
+  const d = document.createElement('div');
+  d.className = 'typing-wrap'; d.id = 'lip-typing';
+  d.innerHTML = `<div class="msg-av">🤖</div><div class="typing-bbl"><div class="td"></div><div class="td"></div><div class="td"></div></div>`;
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function hideTyping() {
+  const el = document.getElementById('lip-typing');
+  if (el) el.remove();
+}
+
+function fmt(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g,'<br>');
+}
+
+function grow(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 110) + 'px';
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+}
+
+// ══════════════════════════════════════════════════════
+// Messaging
+// ══════════════════════════════════════════════════════
+async function send() {
+  const el   = document.getElementById('lip-input');
+  const text = el.value.trim();
+  if (!text || busy) return;
+
+  el.value = ''; el.style.height = 'auto';
+  document.getElementById('lip-send').disabled = true;
+
+  addMsg('user', text);
+  scanForLead(text);
+  msgs.push({ role: 'user', content: text });
+
+  busy = true;
+  showTyping();
+
+  try {
+    const reply = await callClaude();
+    hideTyping();
+    msgs.push({ role: 'assistant', content: reply });
+    addMsg('agent', reply);
+    scanForLead(reply);
+    maybeSaveLead();
+  } catch (err) {
+    hideTyping();
+    addMsg('agent', "Sorry, I hit a snag. Try again in a moment.");
+    console.error(err);
+  }
+
+  busy = false;
+  document.getElementById('lip-send').disabled = false;
+  document.getElementById('lip-input').focus();
+}
+
+async function callClaude() {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 380,
+      system: SYSTEM,
+      messages: msgs.slice(-24)
+    })
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err?.error?.message || `HTTP ${res.status}`);
+  }
+
+  const data = await res.json();
+  return data.content[0].text;
+}
+
+// ══════════════════════════════════════════════════════
+// Lead capture
+// ══════════════════════════════════════════════════════
+function scanForLead(text) {
+  if (!lead.email) {
+    const m = text.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
+    if (m) lead.email = m[0];
+  }
+  if (!lead.name) {
+    const m = text.match(/(?:i'm|i am|name(?:'s| is))\s+([A-Z][a-z]{1,})/i);
+    if (m) lead.name = m[1];
+  }
+}
+
+function maybeSaveLead() {
+  if (lead.saved || msgs.length < 6) return;
+  lead.saved     = true;
+  lead.timestamp = new Date().toISOString();
+  lead.transcript = msgs.map(m => `${m.role === 'user' ? 'Visitor' : 'Aria'}: ${m.content}`).join('\n\n');
+  leads.push({ ...lead });
+  localStorage.setItem('lip_leads', JSON.stringify(leads));
+}
+
+// ══════════════════════════════════════════════════════
+// Leads viewer
+// ══════════════════════════════════════════════════════
+function viewLeads() {
+  const all = JSON.parse(localStorage.getItem('lip_leads') || '[]');
+  if (!all.length) { alert('No leads captured yet. Have a conversation first.'); return; }
+
+  const w = window.open('', '_blank', 'width=720,height=620,scrollbars=yes');
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <title>Chat Leads — LIP Services</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f8fafc; color: #1a1a2e; padding: 28px; }
+    h2 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .sub { font-size: 13px; color: #64748b; margin-bottom: 24px; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 14px; }
+    .meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; margin-bottom: 12px; }
+    .meta b { color: #1a1a2e; }
+    .meta span { color: #64748b; }
+    details summary { cursor: pointer; font-size: 13px; color: #4f46e5; font-weight: 600; }
+    pre { white-space: pre-wrap; font-size: 12px; color: #64748b; margin-top: 12px; line-height: 1.7; }
+  </style></head><body>
+  <h2>Chat Leads (${all.length})</h2>
+  <div class="sub">Captured from AI chat agent conversations</div>
+  ${all.map((l,i) => `<div class="card">
+    <div class="meta">
+      <span>#${i+1}</span>
+      ${l.name  ? `<span>Name: <b>${l.name}</b></span>` : ''}
+      ${l.email ? `<span>Email: <b>${l.email}</b></span>` : ''}
+      <span>${new Date(l.timestamp).toLocaleString('en-AU')}</span>
+    </div>
+    <details><summary>View transcript →</summary><pre>${l.transcript || '(no transcript)'}</pre></details>
+  </div>`).join('')}
+  </body></html>`);
+}
+</script>
+</body>
+</html>
