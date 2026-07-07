@@ -28,12 +28,12 @@ Files that are deployed to or embedded in the WordPress site.
 
 | File | Purpose | Status |
 |---|---|---|
-| `chat-proxy.php` | Backend proxy for Aria chatbot API calls | Check if deployed |
-| `divi-chat-embed.html` | Divi block embed for Aria chatbot | Check if deployed |
-| `divi-blocks.html` | Custom Divi block HTML | Check if deployed |
-| `page-landing.php` | WordPress page template | Check if deployed |
-| `chat-agent.html` | Aria chatbot frontend UI | Migrated from Claude-Lips — verify live status |
-| `knowledge-base.js` | Shared AI knowledge base used by Aria | Migrated from Claude-Lips — verify live status |
+| `chat-proxy.php` | Backend proxy for Aria chatbot API calls | ✅ Live — reads key from .htaccess SetEnv |
+| `divi-chat-embed.html` | Divi block embed for Aria chatbot | ✅ Live |
+| `divi-blocks.html` | Custom Divi block HTML | ✅ Live |
+| `page-landing.php` | WordPress page template | ✅ Live |
+| `chat-agent.html` | Aria chatbot frontend UI | ✅ Live — HTML injected directly into Divi Theme Options → Body |
+| `knowledge-base.js` | Shared AI knowledge base used by Aria | ✅ Live — deployed to `/wp-content/uploads/lip/knowledge-base.js` |
 
 ---
 
@@ -41,10 +41,10 @@ Files that are deployed to or embedded in the WordPress site.
 
 | Detail | Value |
 |---|---|
-| Hosting | [fill in — e.g. SiteGround, WP Engine, cPanel] |
-| WordPress admin | [fill in URL] |
-| FTP/SFTP access | [fill in or note where credentials are stored] |
-| Divi version | [fill in] |
+| Hosting | DreamIT Host |
+| WordPress admin | https://lipservices.com.au/wp-admin/ |
+| FTP/SFTP access | Via cPanel (no standalone FTP client configured) |
+| Divi version | 5.7.4 |
 
 ---
 
