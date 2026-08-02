@@ -42,75 +42,28 @@ LIP Services replaces all of that with AI systems that run 24/7.
 
 ---
 
-## SERVICES
+## SERVICES — THREE SUPPORT LEVELS
 
-**1. AI Receptionist & Booking**
-Handles inbound calls, chats and messages. Qualifies leads and books appointments automatically, around the clock.
-- 24/7 lead qualification
-- Instant booking confirmation
-- Calendar and CRM sync
-- Custom scripts for each business
+**1. AI Voice Agent (Receptionist)** — $797 setup, $197/month
+24/7 inbound call handling, lead qualification and routing, appointment booking straight from the call, after-hours and overflow coverage, call summaries logged to the CRM, ongoing script updates.
 
-**2. Lead Generation & Outreach**
-Automated prospecting pipelines that find, warm up and deliver qualified leads — no cold calling or manual follow up.
-- Targeted prospect lists
-- AI-written outreach sequences
-- Follow-up automation
-- Pipeline reporting
+**2. Automated CRM** — $1,197 setup, $297/month
+Automated booking confirmations and reminders, email follow-up sequences, the Aria web chat widget, contact and pipeline management, no-show and re-engagement follow-up, monthly reporting.
 
-**3. Ad Campaign Management**
-AI-optimised paid media across Google and Meta. Campaigns are built, managed and continuously improved.
-- Google and Meta ads
-- AI-generated ad creative
-- Conversion tracking
-- Monthly performance reports
-
-**4. Market Research & Intelligence**
-AI-powered competitor and market research delivered as clear, actionable reports.
-- Competitor audits
-- Local market analysis
-- Positioning recommendations
-- Trend monitoring
-
-**5. Business Automation & CRM**
-Connects tools and eliminates repetitive admin. CRM setup, workflow automation, email and SMS sequences.
-- CRM setup and integration
-- Workflow automation via Make and n8n
-- Email and SMS sequences
-- Reporting dashboards
-
-**6. White-Label & Reseller**
-Full white-label AI automation services for agencies. No minimum volume requirements.
-- Branded deliverables
-- Partner pricing
-- Dedicated support
-- Scalable capacity
+**3. AI Automated Office Manager** — $1,997 setup, $447/month (best value)
+Everything in the Voice Agent and CRM, combined into one system, plus ongoing after-sales and review-request follow-up, recurring email newsletters, full inbox/communication management, and priority support.
 
 ---
 
 ## PRICING
 
-**Performance Model — Lead Generation & Email Automation**
-- $0 upfront
-- Performance fee on leads or revenue generated
-- Includes: prospect list building, AI outreach sequences, dead email list revival, Google and Meta ad management, automated follow-up, pipeline reporting
-- Cancel any time if targets aren't met
+Setup fees are one-time. Monthly covers platform costs, monitoring, updates and support. If asked which level is right for them, say it depends on their situation and Rob can recommend the right fit on a call — never guess on their behalf, and never invent a number not listed above.
 
-**Build + Maintain — AI Voice Agent**
-- From $1,500 setup
-- From $250/month maintenance
-- Includes: custom call script and AI persona, lead qualification and routing, CRM and calendar integration, call recording, script updates, platform and API cost coverage, priority support and uptime guarantee
-
-**Build + Maintain — Smart Booking System**
-- From $750 setup
-- From $150/month maintenance
-- Includes: online booking page, calendar and CRM sync, automated confirmations and reminders, no-show follow-up, optional payment collection, monthly upkeep and integration support
-
-**Bundle — Voice Agent + Booking System**
-- From $2,000 setup
-- From $350/month maintenance
-
-Setup fees are one-time. Maintenance covers platform costs, monitoring, updates and support. Exact pricing depends on complexity.
+> SOURCE OF TRUTH: this file (knowledge-base.js) is the one place to update when pricing changes.
+> After editing here, also update: pages/landing-page-v2.html (live pricing page) and
+> wordpress/voice-agent-prompt.md (Telnyx voice agent — re-paste into Telnyx's dashboard after editing).
+> Also double-check the actual Stripe Price IDs (STRIPE_PRICE_CRM/VOICE/BUNDLE in LIPS-CRM) still
+> match — Stripe is the real billing source and isn't wired to read from this file.
 
 ---
 
