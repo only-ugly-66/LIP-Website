@@ -93,10 +93,13 @@ const CHAT_RULES = `
 You are Aria, a warm and helpful AI assistant for LIP Services. Your job is to have a genuine conversation, understand what the visitor's business needs, and help them see if LIP Services is a good fit. You are not a salesperson — you are a knowledgeable friend.
 
 ## Conversation approach
-- Find out what kind of business they run early in the conversation — ask naturally, not as a form
+- Your first priority is their name and best contact number. Until you have both, stay warm but keep steering back to getting them — don't move on to business talk yet.
+- Once you have a name and number, find out what kind of business they run — ask naturally, not as a form
 - Understand their biggest challenge: getting leads, converting them, missing calls, too much admin?
 - Match 1 or 2 relevant services to their situation — never list all services unprompted
-- When there is genuine interest, guide them toward booking a free strategy call with Rob
+- When there is genuine interest, actively offer to get them booked in — say the words "book a strategy call with Rob" so a real booking link automatically appears below your message. Never write out a URL yourself, you don't know the real one and the app adds it for you.
+- If booking isn't the right fit for them right now, that's fine — you already have their name and number, so Rob can follow up when he's free
+- Near the end of the conversation, politely ask for their email too — e.g. "One more thing, mind if I grab your email as well so Rob can send over some info?" If they don't give it, that's fine, don't push — just move on
 - If they share their email, acknowledge it warmly
 
 ## Chat style rules — always follow
@@ -128,7 +131,7 @@ window.addEventListener('load', function(){
 });
 
 function lipGreet(){
-  lipAdd('agent', "G'day! I'm Aria from LIP Services. What brings you here today — are you looking to get more leads, save time on admin, or something else?", true);
+  lipAdd('agent', "G'day! I'm Aria from LIP Services. Before we dive in, can I grab your name and the best number to reach you on?", true);
 }
 
 function lipToggle(){
@@ -218,7 +221,6 @@ async function lipSend(){
     msgs.push({role:'assistant', content:reply});
     lipAdd('agent', reply);
     lipScan(reply);
-    lipMaybeSave();
   } catch(err){
     lipHideTyping();
     lipAdd('agent', "Sorry, I hit a snag. Try again in a moment.");
@@ -255,18 +257,25 @@ function lipBookingClicked(){
   hasBookedCall = true;
 }
 
+function lipCap(s){ return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase(); }
+
+// These are just rough hints sent alongside the transcript — the CRM's webhook
+// re-derives name/email/phone authoritatively by reading the whole conversation
+// through Claude, which handles casual typing, split-up answers, apostrophes
+// etc. far better than per-message regex ever could. This local scan only needs
+// to catch the easy, unambiguous cases; it's a fallback, not the source of truth.
 function lipScan(text){
   if(!lead.email){
     var m=text.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
     if(m) lead.email=m[0];
   }
-  if(!lead.name){
-    var m=text.match(/(?:i'm|i am|my name(?:'s| is)|i'm)\s+([A-Z][a-z]{1,})/i);
-    if(m) lead.name=m[1];
-  }
   if(!lead.phone){
     var m=text.match(/(?:\+?61|0)[2-9]\d{8}|\d{4}\s\d{3}\s\d{3}/);
     if(m) lead.phone=m[0].replace(/\s/g,'');
+  }
+  if(!lead.name){
+    var m=text.match(/(?:i'?m|i am|it'?s|my name(?:'s| is))\s+([a-zA-Z]{2,})/i);
+    if(m) lead.name=lipCap(m[1]);
   }
   // Reset inactivity timer after each message
   clearTimeout(inactivityTimer);
@@ -275,40 +284,26 @@ function lipScan(text){
   }
 }
 
-function lipMaybeSave(){
-  if(msgs.length >= 6) lipSubmitLead();
-}
-
 function lipSubmitLead(){
   if(leadSubmitted || msgs.length < 2) return;
   leadSubmitted = true;
   clearTimeout(inactivityTimer);
 
-  var status = hasBookedCall ? 'HOT' : (lead.email ? 'WARM' : 'COLD');
+  var status = hasBookedCall ? 'HOT' : ((lead.name && lead.email && lead.phone) ? 'WARM' : 'COLD');
   var log    = msgs.map(function(m){ return (m.role==='user'?'Visitor':'Aria')+': '+m.content; }).join('\n\n');
 
-  var fd = new FormData();
-  fd.append('action',            'lead_capture');
-  fd.append('name',              lead.name  || '');
-  fd.append('email',             lead.email || '');
-  fd.append('phone',             lead.phone || '');
-  fd.append('lead_status',       status);
-  fd.append('lead_source',       'website_chatbot');
-  fd.append('conversation_log',  log);
-
-  // sendBeacon fires even if the page is closing
-  if(navigator.sendBeacon){
-    var blob = new Blob([JSON.stringify({
+  // fetch+keepalive survives the page closing, same guarantee sendBeacon was
+  // meant to give us, but unlike sendBeacon (fire-and-forget, no error if it
+  // fails to queue) this actually surfaces a failure instead of going silent.
+  fetch(PROXY_URL, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    keepalive: true,
+    body: JSON.stringify({
       action:'lead_capture', name:lead.name||'', email:lead.email||'', phone:lead.phone||'',
       lead_status:status, lead_source:'website_chatbot', conversation_log:log
-    })], {type:'application/json'});
-    navigator.sendBeacon(PROXY_URL, blob);
-  } else {
-    fetch(PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({action:'lead_capture',name:lead.name||'',email:lead.email||'',
-        phone:lead.phone||'',lead_status:status,lead_source:'website_chatbot',conversation_log:log})
-    }).catch(function(){});
-  }
+    })
+  }).catch(function(err){ console.error('[Aria] lead_capture failed:', err); });
 }
 
 })();
