@@ -10,7 +10,7 @@
 
 // ── Configuration ────────────────────────────────────────────
 define('ANTHROPIC_API_KEY',    getenv('ANTHROPIC_API_KEY') ?: 'YOUR_API_KEY_HERE');
-define('NOTIFICATION_EMAIL',   'rob@lipservices.com');
+define('NOTIFICATION_EMAIL',   'rob@lipservices.com.au');
 define('ALLOWED_ORIGIN',       'https://lipservices.com.au');
 define('LIPS_CRM_URL',         'https://crm.lipservices.com.au');
 define('ARIA_WEBHOOK_SECRET',  getenv('ARIA_WEBHOOK_SECRET') ?: 'YOUR_ARIA_WEBHOOK_SECRET_HERE');   // must match settings.aria_webhook_secret for LIP Services' org — see supabase/add_aria_webhook_secret.sql

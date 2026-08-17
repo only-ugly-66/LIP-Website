@@ -68,7 +68,7 @@ Setup fees are one-time. Monthly covers platform costs, monitoring, updates and 
 
 Rob van Herwynen is the founder of LIP Services. He came from a trades background — years of hands-on work with no tech team. He discovered AI at 60 and realised he could deliver results that previously required an entire marketing department, at a fraction of the cost and time. He built LIP Services so small business owners who aren't tech people can have AI working for their business.
 
-Contact: rob@lipservices.com | 0422 717 798 | lipservices.com.au | ABN: 96 976 308 814
+Contact: rob@lipservices.com.au | 0422 717 798 | lipservices.com.au | ABN: 96 976 308 814
 
 ---
 

@@ -1,3 +1,36 @@
+<!--
+  ⚠ ARCHIVED 2026-08-17 — STALE, DO NOT USE OR REFERENCE.
+  Full custom PHP template. Its own commit (82a37f8) already called it
+  superseded by the Divi Code-module approach. Old $1,500-setup pricing,
+  and has a name/email/phone form the live site doesn't currently have.
+  Current live homepage content: pages/home-page-section.html
+  See CLAUDE.md and copy/plan-of-attack-2026.md step 4 for the full trail.
+-->
+<?php /* Template Name: LIP Landing Page */ ?>
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Marketing &amp; Automation for Small Business | LIP Services</title>
+  <meta name="description" content="AI receptionist, lead generation and automation for local and professional service businesses — enterprise tools at a small business price. Get started free."/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LIP Services",
+    "url": "https://lipservices.com.au",
+    "description": "AI-powered marketing and automation for local and professional service businesses — AI receptionists, lead generation, ad management, and business automation.",
+    "email": "rob@lipservices.com",
+    "telephone": "+61422717798",
+    "founder": {
+      "@type": "Person",
+      "name": "Robert van Herwynen"
+    },
+    "areaServed": "AU",
+    "sameAs": []
+  }
+  </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -879,6 +912,21 @@
       .hero-stats { gap: 28px; }
     }
   </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">LIP<span>.</span>Services</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#system">Our System</a></li>
+    <li><a href="#who">Who We Help</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://calendar.app.google/oqTcitaDB6RRbLiy5" target="_blank" rel="noopener" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -1065,11 +1113,11 @@
     <h2 class="section-title">Built for local service<br/>and professional businesses.</h2>
     <p class="section-sub">If you book appointments, take enquiries, or rely on local reputation — we can help you grow faster with less effort.</p>
     <div class="who-grid">
-      <div class="who-card">
+      <a class="who-card" href="https://lipservices.com.au/ai-receptionist-for-tradies/" style="text-decoration:none;color:inherit;display:block;">
         <div class="who-icon">🔧</div>
         <h3>Trades &amp; Home Services</h3>
         <p>Plumbers, electricians, HVAC, builders, landscapers. Get more jobs booked without answering every call yourself.</p>
-      </div>
+      </a>
       <div class="who-card">
         <div class="who-icon">💆</div>
         <h3>Health &amp; Wellness</h3>
@@ -1264,6 +1312,13 @@
   var LANDING_ORG_ID = '437097e2-f5f7-4f4a-9623-d0f8952ed71c';
   var LANDING_URL    = 'https://crm.lipservices.com.au/api/webhooks/landing';
 
+  // Reads ?src= off the page URL so bio links, ads, and future landing
+  // pages each report distinctly in the CRM instead of all landing as
+  // one undifferentiated 'landing_page' source.
+  function leadSource(){
+    return new URLSearchParams(window.location.search).get('src') || 'landing_page';
+  }
+
   document.getElementById('enquiry-form').addEventListener('submit', async function(e){
     e.preventDefault();
 
@@ -1285,7 +1340,7 @@
       var res  = await fetch(LANDING_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ org_id: LANDING_ORG_ID, name: name, email: email, phone: phone, source: 'landing_page', consent: true }),
+        body: JSON.stringify({ org_id: LANDING_ORG_ID, name: name, email: email, phone: phone, source: leadSource(), consent: true }),
       });
       var data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Something went wrong');
@@ -1305,3 +1360,276 @@
 })();
 </script>
 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LIP<span>.</span>Services</div>
+  <p style="margin-bottom:8px">Local Internet Presence Services · AI Marketing &amp; Automation · Australia-Wide</p>
+  <p>
+    <a href="mailto:rob@lipservices.com">rob@lipservices.com</a> &nbsp;·&nbsp;
+    <a href="tel:+61422717798">0422 717 798</a> &nbsp;·&nbsp;
+    <a href="https://lipservices.com.au">lipservices.com.au</a>
+  </p>
+  <p style="margin-top:12px; font-size:12px; color:#334155">ABN 96 976 308 814</p>
+  <p style="margin-top:8px; font-size:12px; color:#334155">© 2026 LIP Services. All rights reserved.</p>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     Aria Chat Widget — inline (Divi header/footer bypassed)
+     ══════════════════════════════════════════════════════════ -->
+<style>
+#lip-widget *,#lip-widget *::before,#lip-widget *::after{box-sizing:border-box}
+#lip-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+#lip-btn{width:62px;height:62px;border-radius:50%;background:#4f46e5;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(79,70,229,.55);transition:transform .2s,box-shadow .2s;position:relative}
+#lip-btn:hover{transform:scale(1.07);box-shadow:0 6px 30px rgba(79,70,229,.65)}
+#lip-btn svg{width:27px;height:27px;fill:white;transition:opacity .15s}
+#lip-btn .ico-chat{display:block}#lip-btn .ico-close{display:none}
+#lip-btn.open .ico-chat{display:none}#lip-btn.open .ico-close{display:block}
+.lip-notif{position:absolute;top:1px;right:1px;width:15px;height:15px;background:#10b981;border-radius:50%;border:2.5px solid white;display:none;animation:lip-pulse 2.2s infinite}
+@keyframes lip-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+#lip-panel{position:absolute;bottom:76px;right:0;width:384px;height:568px;background:white;border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,.3);display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;transform:scale(.82) translateY(8px);opacity:0;pointer-events:none;transition:transform .28s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+#lip-panel.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.lip-hdr{background:#0f0f1a;padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.lip-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#818cf8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.lip-hi{flex:1;min-width:0}
+.lip-hn{font-size:14px;font-weight:700;color:white}
+.lip-hs{font-size:12px;color:#10b981;display:flex;align-items:center;gap:5px;margin-top:2px}
+.lip-hs::before{content:'';width:7px;height:7px;background:#10b981;border-radius:50%;flex-shrink:0}
+.lip-hb{font-size:11px;font-weight:700;color:#6366f1}
+.lip-msgs{flex:1;overflow-y:auto;padding:18px 14px;display:flex;flex-direction:column;gap:12px;background:#f8fafc;scroll-behavior:smooth}
+.lip-msgs::-webkit-scrollbar{width:4px}.lip-msgs::-webkit-scrollbar-thumb{background:#e2e8f0;border-radius:2px}
+.lmsg{display:flex;gap:8px;align-items:flex-end}.lmsg.user{flex-direction:row-reverse}
+.lmav{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#818cf8);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.lmbd{max-width:80%;display:flex;flex-direction:column}.lmsg.user .lmbd{align-items:flex-end}
+.lmbbl{padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.55;word-break:break-word}
+.lmsg.agent .lmbbl{background:white;color:#1a1a2e;border-bottom-left-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.lmsg.user .lmbbl{background:#4f46e5;color:white;border-bottom-right-radius:4px}
+.lmt{font-size:10px;color:#94a3b8;margin-top:4px;padding:0 2px}
+.lip-book{display:inline-block;margin-top:8px;background:#4f46e5;color:white;text-decoration:none;font-size:13px;font-weight:700;padding:9px 16px;border-radius:10px;transition:background .15s;width:100%;text-align:center}
+.lip-book:hover{background:#6366f1;color:white}
+.lip-qr{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.lip-qrb{background:white;border:1.5px solid #e2e8f0;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:500;color:#4f46e5;cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit}
+.lip-qrb:hover{background:#4f46e5;color:white;border-color:#4f46e5}
+.lip-typ{display:flex;gap:8px;align-items:flex-end}
+.lip-typb{background:white;border-radius:16px;border-bottom-left-radius:4px;padding:13px 16px;box-shadow:0 1px 4px rgba(0,0,0,.07);display:flex;gap:5px;align-items:center}
+.ltd{width:7px;height:7px;background:#94a3b8;border-radius:50%;animation:lip-bounce 1.3s infinite}
+.ltd:nth-child(2){animation-delay:.18s}.ltd:nth-child(3){animation-delay:.36s}
+@keyframes lip-bounce{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-7px);opacity:1}}
+.lip-iw{padding:12px 14px;border-top:1px solid #f0f0f0;background:white;display:flex;gap:8px;align-items:flex-end;flex-shrink:0}
+#lip-input{flex:1;border:1.5px solid #e2e8f0;border-radius:12px;padding:10px 14px;font-size:14px;font-family:inherit;outline:none;resize:none;min-height:42px;max-height:110px;line-height:1.45;color:#0f0f1a;transition:border-color .15s}
+#lip-input:focus{border-color:#4f46e5}
+#lip-input::placeholder{color:#94a3b8}
+#lip-send{width:42px;height:42px;background:#4f46e5;border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s,transform .1s}
+#lip-send:hover{background:#6366f1}#lip-send:active{transform:scale(.94)}
+#lip-send:disabled{background:#e2e8f0;cursor:default}
+#lip-send svg{width:18px;height:18px;fill:white}#lip-send:disabled svg{fill:#94a3b8}
+.lip-ft{text-align:center;font-size:10px;color:#94a3b8;padding:5px 14px 10px;background:white}
+@media(max-width:460px){#lip-panel{width:calc(100vw - 16px);height:calc(100dvh - 96px);right:8px;bottom:76px;border-radius:16px}}
+</style>
+
+<div id="lip-widget">
+  <div id="lip-panel">
+    <div class="lip-hdr">
+      <div class="lip-av">🤖</div>
+      <div class="lip-hi">
+        <div class="lip-hn">Aria</div>
+        <div class="lip-hs">Online — replies instantly</div>
+      </div>
+      <div class="lip-hb">LIP Services</div>
+    </div>
+    <div class="lip-msgs" id="lip-msgs"></div>
+    <div class="lip-iw">
+      <textarea id="lip-input" placeholder="Ask me anything..." rows="1"
+        onkeydown="lipKey(event)" oninput="lipGrow(this)"></textarea>
+      <button id="lip-send" onclick="lipSend()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="lip-ft">Powered by Claude AI · LIP Services</div>
+  </div>
+  <button id="lip-btn" onclick="lipToggle()">
+    <span class="lip-notif" id="lip-notif"></span>
+    <svg class="ico-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    <svg class="ico-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
+</div>
+
+<script src="/wp-content/uploads/lip/knowledge-base.js"></script>
+<script>
+(function(){
+
+const BOOKING_URL = 'https://calendar.app.google/oqTcitaDB6RRbLiy5';
+const PROXY_URL   = '/chat-proxy.php';
+
+const CHAT_RULES = `
+## Who you are (chat)
+You are Aria, a warm and helpful AI assistant for LIP Services. Your job is to have a genuine conversation, understand what the visitor's business needs, and help them see if LIP Services is a good fit. You are not a salesperson — you are a knowledgeable friend.
+
+## Conversation approach
+- Find out what kind of business they run early in the conversation — ask naturally, not as a form
+- Understand their biggest challenge: getting leads, converting them, missing calls, too much admin?
+- Match 1 or 2 relevant services to their situation — never list all services unprompted
+- When there is genuine interest, guide them toward booking a free strategy call with Rob
+- If they share their email, acknowledge it warmly
+
+## Chat style rules — always follow
+- Maximum 3 sentences per message. No exceptions.
+- Never use bullet points or numbered lists — write in natural sentences only.
+- One idea per message. If you have two things to say, pick the more important one and let the conversation continue.
+- Warm and conversational. Like a helpful friend, not a salesperson.
+- Plain Australian English. No jargon, no corporate language.
+- Never be pushy.
+
+## If you don't know something
+Say Rob would be the best person to answer that on a call — and offer to help them book one.
+`;
+
+const SYSTEM = (typeof KNOWLEDGE_BASE !== 'undefined' ? KNOWLEDGE_BASE : '') + CHAT_RULES;
+
+let msgs   = [];
+let busy   = false;
+let isOpen = false;
+let lead   = { name:null, email:null, saved:false };
+
+window.addEventListener('load', function(){
+  lipGreet();
+  setTimeout(function(){ if(!isOpen) document.getElementById('lip-notif').style.display='block'; }, 3500);
+});
+
+function lipGreet(){
+  lipAdd('agent', "G'day! I'm Aria from LIP Services. What brings you here today — are you looking to get more leads, save time on admin, or something else?", true);
+}
+
+function lipToggle(){
+  isOpen = !isOpen;
+  document.getElementById('lip-panel').classList.toggle('open', isOpen);
+  document.getElementById('lip-btn').classList.toggle('open', isOpen);
+  if(isOpen){
+    document.getElementById('lip-notif').style.display='none';
+    setTimeout(function(){ document.getElementById('lip-input').focus(); }, 320);
+  }
+}
+
+function lipAdd(role, text, showQR){
+  var c = document.getElementById('lip-msgs');
+  var t = new Date().toLocaleTimeString('en-AU',{hour:'2-digit',minute:'2-digit'});
+  var d = document.createElement('div');
+  d.className = 'lmsg ' + role;
+  var showBook = BOOKING_URL && /book|strategy call|schedule/i.test(text);
+  if(role==='agent'){
+    d.innerHTML = '<div class="lmav">🤖</div><div class="lmbd">'
+      + '<div class="lmbbl">' + lipFmt(text) + '</div>'
+      + (showBook ? '<a class="lip-book" href="'+BOOKING_URL+'" target="_blank" rel="noopener">📅 Book a Free Strategy Call →</a>' : '')
+      + (showQR   ? lipQR() : '')
+      + '<span class="lmt">Aria · '+t+'</span>'
+      + '</div>';
+  } else {
+    d.innerHTML = '<div class="lmbd"><div class="lmbbl">'+lipFmt(text)+'</div><span class="lmt">'+t+'</span></div>';
+  }
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function lipQR(){
+  var opts = ['Get more leads','Too much admin','Missing calls after hours','How does pricing work?'];
+  return '<div class="lip-qr">'
+    + opts.map(function(o){ return '<button class="lip-qrb" onclick="lipUseQR(this,\''+o.replace(/'/g,"\\'")+'\')">'+ o +'</button>'; }).join('')
+    + '</div>';
+}
+
+function lipUseQR(el, text){
+  var p = el.closest('.lip-qr'); if(p) p.remove();
+  document.getElementById('lip-input').value = text;
+  lipSend();
+}
+
+function lipShowTyping(){
+  var c = document.getElementById('lip-msgs');
+  var d = document.createElement('div');
+  d.className='lip-typ'; d.id='lip-typing';
+  d.innerHTML='<div class="lmav">🤖</div><div class="lip-typb"><div class="ltd"></div><div class="ltd"></div><div class="ltd"></div></div>';
+  c.appendChild(d); c.scrollTop=c.scrollHeight;
+}
+function lipHideTyping(){ var e=document.getElementById('lip-typing'); if(e) e.remove(); }
+
+function lipFmt(s){
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\n/g,'<br>');
+}
+
+function lipGrow(el){
+  el.style.height='auto';
+  el.style.height=Math.min(el.scrollHeight,110)+'px';
+}
+
+function lipKey(e){
+  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); lipSend(); }
+}
+
+async function lipSend(){
+  var el   = document.getElementById('lip-input');
+  var text = el.value.trim();
+  if(!text || busy) return;
+  el.value=''; el.style.height='auto';
+  document.getElementById('lip-send').disabled=true;
+  lipAdd('user', text);
+  lipScan(text);
+  msgs.push({role:'user', content:text});
+  busy=true; lipShowTyping();
+  try {
+    var reply = await lipCall();
+    lipHideTyping();
+    msgs.push({role:'assistant', content:reply});
+    lipAdd('agent', reply);
+    lipScan(reply);
+    lipMaybeSave();
+  } catch(err){
+    lipHideTyping();
+    lipAdd('agent', "Sorry, I hit a snag. Try again in a moment.");
+    console.error(err);
+  }
+  busy=false;
+  document.getElementById('lip-send').disabled=false;
+  document.getElementById('lip-input').focus();
+}
+
+async function lipCall(){
+  var res = await fetch(PROXY_URL, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ action:'chat', system:SYSTEM, messages:msgs.slice(-24) })
+  });
+  if(!res.ok){ var e=await res.json().catch(function(){return {};}); throw new Error(e.error||'HTTP '+res.status); }
+  var data = await res.json();
+  return data.content[0].text;
+}
+
+function lipScan(text){
+  if(!lead.email){
+    var m=text.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
+    if(m) lead.email=m[0];
+  }
+  if(!lead.name){
+    var m=text.match(/(?:i'm|i am|name(?:'s| is))\s+([A-Z][a-z]{1,})/i);
+    if(m) lead.name=m[1];
+  }
+}
+
+function lipMaybeSave(){
+  if(lead.saved || msgs.length < 6) return;
+  lead.saved     = true;
+  lead.timestamp = new Date().toISOString();
+  lead.transcript= msgs.map(function(m){ return (m.role==='user'?'Visitor':'Aria')+': '+m.content; }).join('\n\n');
+  fetch(PROXY_URL, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ action:'lead', name:lead.name||'Unknown', email:lead.email||'', transcript:lead.transcript })
+  }).catch(function(){});
+}
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,471 @@
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .vid-page {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+
+  .vid-page .section-inner { max-width: 1100px; margin: 0 auto; }
+  .vid-page section { padding: 80px 40px; }
+
+  .vid-page .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #4f46e5;
+    margin-bottom: 12px;
+  }
+
+  .vid-page .section-title {
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .vid-page .section-sub {
+    font-size: 17px;
+    color: #64748b;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .vid-page .hero {
+    background: #0f0f1a;
+    color: #fff;
+    padding: 90px 40px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vid-page .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,70,229,0.35) 0%, transparent 70%);
+  }
+
+  .vid-page .hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
+
+  .vid-page .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(79,70,229,0.2);
+    border: 1px solid rgba(79,70,229,0.4);
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  .vid-page .hero h1 {
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    margin-bottom: 22px;
+  }
+
+  .vid-page .hero h1 .accent { color: #818cf8; }
+
+  .vid-page .hero p {
+    font-size: 18px;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .vid-page .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .vid-page .btn-primary {
+    background: #4f46e5;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .vid-page .btn-primary:hover { background: #6366f1; transform: translateY(-1px); }
+
+  .vid-page .btn-ghost {
+    background: transparent;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+
+  .vid-page .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+  /* ── TOC ── */
+  .vid-page .toc {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+  .vid-page .toc-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4f46e5;
+    margin-bottom: 12px;
+  }
+  .vid-page .toc ol { margin: 0; padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+  .vid-page .toc a { color: #1a1a2e; text-decoration: none; font-weight: 500; font-size: 14.5px; }
+  .vid-page .toc a:hover { color: #4f46e5; text-decoration: underline; }
+
+  /* ── PROBLEM ── */
+  .vid-page .problem { background: #fafafa; }
+
+  .vid-page .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 48px;
+    align-items: center;
+  }
+
+  .vid-page .problem-list { list-style: none; }
+
+  .vid-page .problem-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 15px;
+    color: #64748b;
+  }
+
+  .vid-page .problem-list li:last-child { border-bottom: none; }
+
+  .vid-page .x-icon {
+    width: 20px;
+    height: 20px;
+    background: #fee2e2;
+    border-radius: 50%;
+    color: #ef4444;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .vid-page .solution-card {
+    background: #0f0f1a;
+    color: #fff;
+    border-radius: 20px;
+    padding: 40px;
+  }
+
+  .vid-page .solution-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; line-height: 1.3; }
+  .vid-page .solution-card p { color: #94a3b8; font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+
+  .vid-page .solution-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vid-page .tag {
+    background: rgba(79,70,229,0.2);
+    border: 1px solid rgba(79,70,229,0.3);
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .vid-page .system { background: #0f0f1a; color: #fff; }
+  .vid-page .system .section-label { color: #818cf8; }
+  .vid-page .system .section-sub { color: #94a3b8; }
+
+  .vid-page .system-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .vid-page .step-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .vid-page .step-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #818cf8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .vid-page .step-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .vid-page .step-card p { font-size: 13.5px; color: #94a3b8; line-height: 1.6; }
+
+  /* ── INCLUDED ── */
+  .vid-page .included-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 32px;
+    margin-top: 40px;
+  }
+  .vid-page .included-list li {
+    font-size: 15px;
+    color: #1a1a2e;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .vid-page .included-list li::before {
+    content: '✓';
+    color: #10b981;
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  /* ── PROOF / FOUNDER ── */
+  .vid-page .proof { background: #fafafa; }
+  .vid-page .proof-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 44px;
+    max-width: 780px;
+    margin: 40px auto 0;
+  }
+  .vid-page .proof-card p { font-size: 15.5px; color: #64748b; line-height: 1.8; margin-bottom: 16px; }
+  .vid-page .proof-name { font-size: 14px; color: #1a1a2e; font-weight: 700; margin-top: 20px; }
+  .vid-page .proof-name span { display: block; font-weight: 500; color: #64748b; font-size: 13px; margin-top: 2px; }
+
+  /* ── PRICING / QUOTE ── */
+  .vid-page .pricing { background: #eef2ff; }
+  .vid-page .quote-card {
+    background: #0f0f1a;
+    color: #fff;
+    border-radius: 24px;
+    padding: 48px;
+    max-width: 560px;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+  .vid-page .quote-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 14px; }
+  .vid-page .quote-card p { font-size: 14.5px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 28px; }
+  .vid-page .quote-cta { display: inline-block; padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; background: #fff; color: #0f0f1a; }
+  .vid-page .quote-cta:hover { background: #f0f0f0; }
+  .vid-page .pt-note { font-size: 13px; color: #64748b; margin-top: 18px; }
+
+  /* ── FINAL CTA ── */
+  .vid-page .cta-final { background: #0f0f1a; text-align: center; padding: 90px 40px; }
+  .vid-page .cta-final .section-label { color: #818cf8; }
+  .vid-page .cta-final h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: #fff; letter-spacing: -0.8px; margin-bottom: 16px; }
+  .vid-page .cta-final p { font-size: 17px; color: #94a3b8; max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+
+  /* ── RELATED ── */
+  .vid-page .related { padding: 40px 40px 60px; text-align: center; }
+  .vid-page .related-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .vid-page .related-links a {
+    font-size: 13.5px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  .vid-page .related-links a:hover { background: #eef2ff; }
+
+  @media (max-width: 768px) {
+    .vid-page section { padding: 56px 20px; }
+    .vid-page .hero { padding: 64px 20px 48px; }
+    .vid-page .problem-grid { grid-template-columns: 1fr; }
+    .vid-page .system-steps { grid-template-columns: 1fr; }
+    .vid-page .included-list { grid-template-columns: 1fr; }
+    .vid-page .toc ol { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="vid-page">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🎥 Video Marketing for Tradies</div>
+    <h1>You're On the Tools From 7am.<br/>We Handle <span class="accent">Getting You Found.</span></h1>
+    <p>Two or three raw videos a week, filmed on your phone, is enough to be found by people already looking for exactly what you do. We write the scripts, edit the videos, and schedule the posts. You just supply the footage.</p>
+    <div class="hero-ctas">
+      <a href="https://calendar.app.google/oqTcitaDB6RRbLiy5" target="_blank" rel="noopener" class="btn-primary">Book a Free Strategy Call</a>
+      <a href="https://lipservices.com.au/get-started/?src=trades-video-page" class="btn-ghost">Get Your Free Plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section style="padding:40px 40px 0">
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">In This Article</div>
+    <ol>
+      <li><a href="#problem">The Too-Busy-to-Market Problem</a></li>
+      <li><a href="#how-it-works">How Video Marketing Works</a></li>
+      <li><a href="#included">What's Included</a></li>
+      <li><a href="#proof">Built By a Tradie</a></li>
+      <li><a href="#pricing">Get a Quote</a></li>
+      <li><a href="#get-started">Get Started</a></li>
+    </ol>
+  </nav>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="problem-grid">
+      <div>
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">If your business stops the<br/>moment you stop, it's just a job.</h2>
+        <p class="section-sub">Word of mouth is the best lead you'll ever get, until it dries up. And it always does eventually. Most tradies would do more marketing if they had time, but by 5pm the last thing you want to do is film a video.</p>
+        <ul class="problem-list" style="margin-top:32px">
+          <li><div class="x-icon">✕</div> Running on referrals with no second pipeline if they slow down</li>
+          <li><div class="x-icon">✕</div> No time to write, film, or edit content after a full day on the tools</li>
+          <li><div class="x-icon">✕</div> A competitor's reel gets 12,000 views, yours gets 43</li>
+          <li><div class="x-icon">✕</div> Raw site footage that never turns into anything, because nobody edits it</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <h3>Your content, built for you.</h3>
+        <p>We write the hook and the script, edit the video, and schedule the posts. You supply a 30-second clip from site, we handle everything else.</p>
+        <div class="solution-tags">
+          <span class="tag">Script Writing</span>
+          <span class="tag">Video Editing</span>
+          <span class="tag">Post Scheduling</span>
+          <span class="tag">Proven Hook Formulas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="system" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title" style="color:#fff">From raw site footage to<br/>a second lead pipeline.</h2>
+    <p class="section-sub">Getting seen is step one. Getting booked is step two. We build both, so the content doing the attracting connects straight into the system doing the booking.</p>
+    <div class="system-steps">
+      <div class="step-card">
+        <div class="step-num">Step 01</div>
+        <h3>You Film</h3>
+        <p>A repair you just did, a problem you see all the time, something people always get wrong. Just your phone, out on site or in the workshop.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 02</div>
+        <h3>We Build</h3>
+        <p>Hook written to stop the scroll, script structured around it, video edited and captioned, ready to post.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">Step 03</div>
+        <h3>We Post</h3>
+        <p>Scheduled consistently, two or three times a week, so it keeps working in the background while you're on the tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section id="included">
+  <div class="section-inner">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">A content pipeline<br/>you don't have to run.</h2>
+    <p class="section-sub">Built to work alongside your AI receptionist and follow-up automation, so new attention turns into booked jobs, not just views.</p>
+    <ul class="included-list">
+      <li>Hook &amp; script writing for every video</li>
+      <li>Video editing &amp; captions</li>
+      <li>Consistent posting schedule</li>
+      <li>Content built from real job-site footage</li>
+      <li>Proven hook formulas, not generic templates</li>
+      <li>Connects to your AI receptionist &amp; follow-up system</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROOF / FOUNDER -->
+<section class="proof" id="proof">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">Built By a Tradie</div>
+    <h2 class="section-title">I'm 60. Came from a tradie<br/>background. AI runs my business every day.</h2>
+    <div class="proof-card" style="text-align:left">
+      <p>I'm not a tech person, never was. I worked with my hands for years. But at 60 I started using AI to handle my own marketing, and it completely changed what was possible for me.</p>
+      <p>The same tools I use to grow my own business, I now build for tradies. Nothing complicated, simple systems that get you more calls, more quotes, more jobs, without you having to become a tech person.</p>
+      <p>You don't need a degree. You don't need a big budget. You just need someone who's actually been in your shoes to show you what works.</p>
+      <div class="proof-name">Rob van Herwynen<span>Founder, LIP Services — trades background, not a tech person by nature</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / QUOTE -->
+<section class="pricing" id="pricing">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Built around your<br/>content volume.</h2>
+    <div class="quote-card">
+      <h3>Video Marketing for Tradies</h3>
+      <p>Pricing depends on how many videos a week and how much editing is involved, so it's quoted per business rather than a fixed package. Often bundled with the AI receptionist so new attention gets answered, not just watched.</p>
+      <a href="https://calendar.app.google/oqTcitaDB6RRbLiy5" target="_blank" rel="noopener" class="quote-cta">Get a Custom Quote →</a>
+    </div>
+    <p class="pt-note">Book a free call and we'll map out a content plan and price for your trade.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final" id="get-started">
+  <div class="section-label">Get Started</div>
+  <h2>Ready for a second<br/>pipeline that doesn't rely on referrals?</h2>
+  <p>Book a free 30-minute strategy call, or start with your free plan and see what a real content pipeline would look like for your trade.</p>
+  <div class="hero-ctas">
+    <a href="https://calendar.app.google/oqTcitaDB6RRbLiy5" target="_blank" rel="noopener" class="btn-primary">Book a Free Call</a>
+    <a href="https://lipservices.com.au/get-started/?src=trades-video-page" class="btn-ghost">Get Your Free Plan →</a>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="section-label">More Ways We Help Tradies</div>
+  <div class="related-links">
+    <a href="https://lipservices.com.au/ai-receptionist-for-tradies/">AI Receptionist</a>
+    <a href="https://lipservices.com.au/quote-follow-up-automation-for-tradies/">Quote Follow-Up Automation</a>
+    <a href="https://lipservices.com.au/invoice-reminder-automation-for-tradies/">Invoice &amp; Payment Reminders</a>
+    <a href="https://lipservices.com.au/">Back to Home</a>
+  </div>
+</section>
+
+</div>

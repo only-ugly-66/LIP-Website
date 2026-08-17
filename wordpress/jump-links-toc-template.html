@@ -1,0 +1,80 @@
+<!-- ══════════════════════════════════════════════════════════
+     JUMP LINKS / "QUICK LINKS" TEMPLATE
+     Purpose: earns the "jump to" sub-links Google sometimes shows
+     under a search snippet, taking a searcher straight to a
+     section of the page instead of the top.
+
+     This is NOT schema markup — there's no dedicated schema.org
+     type for it. Google detects it from page structure: a table
+     of contents linking to named anchors, each anchor being a
+     <section id="..."> per Google's July 2023 guidance (the older
+     <a name="..."> anchor style is deprecated for this).
+
+     Appearance is entirely at Google's discretion — clean
+     structure improves the odds, doesn't guarantee it.
+
+     HOW TO USE
+     1. Drop the <nav class="toc"> block right after the page/post
+        H1, before the first content section.
+     2. Wrap each major content block in <section id="...">, with
+        the id matching the TOC link's href exactly.
+     3. Keep TOC link text short and matching the section heading
+        word-for-word — mismatches read as sloppy to both users
+        and Google.
+     4. Sweet spot is 3–6 sections. Fewer rarely triggers it, more
+        gets truncated in the search result.
+     5. Works pasted into a Divi Code module or a blog post's
+        HTML/code block — style is self-contained, no external
+        dependencies.
+     ══════════════════════════════════════════════════════════ -->
+
+<style>
+  .toc {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  .toc-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4f46e5;
+    margin-bottom: 12px;
+  }
+  .toc ol { margin: 0; padding-left: 20px; }
+  .toc li { margin-bottom: 8px; }
+  .toc a {
+    color: #1a1a2e;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .toc a:hover { color: #4f46e5; text-decoration: underline; }
+</style>
+
+<nav class="toc" aria-label="Table of contents">
+  <div class="toc-title">In This Article</div>
+  <ol>
+    <li><a href="#section-one">Section One Heading</a></li>
+    <li><a href="#section-two">Section Two Heading</a></li>
+    <li><a href="#section-three">Section Three Heading</a></li>
+  </ol>
+</nav>
+
+<section id="section-one">
+  <h2>Section One Heading</h2>
+  <p>Content goes here.</p>
+</section>
+
+<section id="section-two">
+  <h2>Section Two Heading</h2>
+  <p>Content goes here.</p>
+</section>
+
+<section id="section-three">
+  <h2>Section Three Heading</h2>
+  <p>Content goes here.</p>
+</section>
