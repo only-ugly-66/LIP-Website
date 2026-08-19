@@ -30,6 +30,7 @@ Current page content. Once a page is published on WordPress, note the live URL h
 | `quote-follow-up-for-tradies.html` | ✅ Live, verified 2026-08-17. **Filename doesn't match live slug** — WP's actual slug is longer than planned (`quote-follow-up-automation-for-tradies`), see `pages/seo-meta-schema-index.md` slug mismatch note | `/quote-follow-up-automation-for-tradies/` |
 | `invoice-reminders-for-tradies.html` | ✅ Live, verified 2026-08-17. **Filename doesn't match live slug** — WP's actual slug is longer than planned (`invoice-reminder-automation-for-tradies`), see `pages/seo-meta-schema-index.md` slug mismatch note | `/invoice-reminder-automation-for-tradies/` |
 | `video-marketing-for-tradies.html` | ✅ Live, verified 2026-08-17 | `/video-marketing-for-tradies/` |
+| `about.html` | 📝 Drafted 2026-08-19, not yet pasted into Divi. Founder bio/origin story — decided 2026-08-19 to stand up as a real nav-level page rather than a blog post (see `copy/plan-of-attack-2026.md`). **Needs a main-nav entry added in Appearance → Menus once live** — outside version control, Robert to do in WP admin. | `/about/` (planned) |
 | `seo-meta-schema-index.md` | Tracking doc, not a page itself | — |
 
 ### wordpress/

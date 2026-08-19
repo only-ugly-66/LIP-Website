@@ -1,0 +1,70 @@
+<!-- ══════════════════════════════════════════════════════════
+     BLOG POST CTA BOX TEMPLATE
+     Purpose: Reusable call-to-action box at the end of blog posts.
+     Matches the jump-links design language (colors, spacing, typography).
+     
+     HOW TO USE
+     1. Copy this entire block (style + div) as a Custom HTML block
+        at the end of the blog post, before the closing post wrapper.
+     2. Replace {{HEADLINE}}, {{SUBTEXT}}, {{BUTTON_TEXT}}, and {{CTA_URL}}
+        with the specific post's CTA.
+     3. Keep the style block — it's self-contained and reusable.
+     4. Adjust {{ICON}} if needed (emoji or remove the span entirely).
+     ══════════════════════════════════════════════════════════ -->
+
+<style>
+  .blog-cta-box {
+    background: linear-gradient(135deg, #f8fafc 0%, #f0f4ff 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 40px 32px;
+    margin: 48px 0;
+    text-align: center;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  .blog-cta-box h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .blog-cta-box p {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 28px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .blog-cta-button {
+    display: inline-block;
+    background: #4f46e5;
+    color: white;
+    padding: 14px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  }
+  .blog-cta-button:hover {
+    background: #4338ca;
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
+    transform: translateY(-2px);
+  }
+  .blog-cta-box .cta-icon {
+    font-size: 32px;
+    margin-right: 8px;
+  }
+</style>
+
+<div class="blog-cta-box">
+  <h3><span class="cta-icon">🚀</span>Ready to see this in action?</h3>
+  <p>Let's have a conversation about what's actually possible for your business — no sales pitch, just practical next steps.</p>
+  <a href="/get-started/?src=blog-ai-marketing-tools-service-businesses" class="blog-cta-button">Get Started Free →</a>
+</div>

@@ -1,0 +1,300 @@
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .fnd-page {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+
+  .fnd-page .section-inner { max-width: 1100px; margin: 0 auto; }
+  .fnd-page section { padding: 80px 40px; }
+
+  .fnd-page .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #4f46e5;
+    margin-bottom: 12px;
+  }
+
+  .fnd-page .section-title {
+    font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  /* ── HERO ── */
+  .fnd-page .hero {
+    background: #0f0f1a;
+    color: #fff;
+    padding: 90px 40px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fnd-page .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,70,229,0.35) 0%, transparent 70%);
+  }
+  .fnd-page .hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
+  .fnd-page .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(79,70,229,0.2);
+    border: 1px solid rgba(79,70,229,0.4);
+    color: #a5b4fc;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .fnd-page .hero h1 {
+    font-size: clamp(30px, 4.2vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.1px;
+    margin-bottom: 22px;
+  }
+  .fnd-page .hero h1 .accent { color: #818cf8; }
+  .fnd-page .hero p {
+    font-size: 18px;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .fnd-page .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .fnd-page .btn-primary {
+    background: #4f46e5;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .fnd-page .btn-primary:hover { background: #6366f1; transform: translateY(-1px); }
+  .fnd-page .btn-ghost {
+    background: transparent;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .fnd-page .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+  /* ── TOC ── */
+  .fnd-page .toc {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+  .fnd-page .toc-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4f46e5;
+    margin-bottom: 12px;
+  }
+  .fnd-page .toc ol { margin: 0; padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 24px; }
+  .fnd-page .toc a { color: #1a1a2e; text-decoration: none; font-weight: 500; font-size: 14.5px; }
+  .fnd-page .toc a:hover { color: #4f46e5; text-decoration: underline; }
+
+  /* ── NARRATIVE CHAPTERS ── */
+  .fnd-page .chapter-light { background: #fff; }
+  .fnd-page .chapter-alt { background: #fafafa; }
+  .fnd-page .chapter-tint { background: #eef2ff; }
+  .fnd-page .chapter-dark { background: #0f0f1a; color: #fff; }
+  .fnd-page .chapter-dark .section-label { color: #818cf8; }
+
+  .fnd-page .narrative { max-width: 720px; }
+  .fnd-page .narrative p {
+    font-size: 16.5px;
+    color: #334155;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .fnd-page .chapter-dark .narrative p { color: #cbd5e1; }
+  .fnd-page .narrative p:last-child { margin-bottom: 0; }
+  .fnd-page .narrative a { color: #4f46e5; font-weight: 600; text-decoration: underline; }
+  .fnd-page .chapter-dark .narrative a { color: #a5b4fc; }
+
+  .fnd-page .chapter-tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+  .fnd-page .chapter-dark .chapter-tag { color: #94a3b8; }
+
+  /* ── FINAL CTA ── */
+  .fnd-page .cta-final { background: #0f0f1a; text-align: center; padding: 90px 40px; }
+  .fnd-page .cta-final .section-label { color: #818cf8; }
+  .fnd-page .cta-final h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: #fff; letter-spacing: -0.8px; margin-bottom: 16px; }
+  .fnd-page .cta-final p { font-size: 17px; color: #94a3b8; max-width: 500px; margin: 0 auto 32px; line-height: 1.7; }
+
+  /* ── RELATED ── */
+  .fnd-page .related { padding: 40px 40px 60px; text-align: center; }
+  .fnd-page .related-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .fnd-page .related-links a {
+    font-size: 13.5px;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 20px;
+  }
+  .fnd-page .related-links a:hover { background: #eef2ff; }
+
+  @media (max-width: 768px) {
+    .fnd-page section { padding: 56px 20px; }
+    .fnd-page .hero { padding: 64px 20px 48px; }
+    .fnd-page .toc ol { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="fnd-page">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🧭 Founder Story</div>
+    <h1>The Long Way Round<br/>to <span class="accent">LIP Services</span></h1>
+    <p>Twelve years of doubt, five years fencing for Jim's, two years on the road, and a vacant block in the bush. Not the highlight reel. The actual story.</p>
+    <div class="hero-ctas">
+      <a href="https://calendar.app.google/oqTcitaDB6RRbLiy5" target="_blank" rel="noopener" class="btn-primary">Book a Free Strategy Call</a>
+      <a href="https://lipservices.com.au/get-started/?src=about-page" class="btn-ghost">Get Your Free Plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section style="padding:40px 40px 0">
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-title">In This Article</div>
+    <ol>
+      <li><a href="#twelve-years">Twelve Years of Playing Pretend</a></li>
+      <li><a href="#jims-fencing">Jim's Fencing</a></li>
+      <li><a href="#the-road">Hitting the Road</a></li>
+      <li><a href="#magpie-rest">Magpie Rest</a></li>
+      <li><a href="#the-idea-that-stuck">The Idea That Wouldn't Let Go</a></li>
+      <li><a href="#lip-services">LIP Services Today</a></li>
+    </ol>
+  </nav>
+</section>
+
+<!-- CHAPTER 1 -->
+<section class="chapter-light" id="twelve-years">
+  <div class="section-inner">
+    <div class="chapter-tag">Chapter One</div>
+    <h2 class="section-title">Twelve Years of Playing Pretend</h2>
+    <div class="narrative">
+      <p>For twelve years I chased an idea a hundred different "gurus" online were all selling: build websites, run ads, do SEO for other businesses, and get paid well for barely any work. I bought the courses. I did the tutorials. I learned how to build and rank websites, and run paid advertising on Facebook and Google. All of it while I was still working a normal job and living a normal life. This wasn't the main event. It was the thing I did on the side, trying to make it the main event.</p>
+      <p>It never felt real. The results were uncertain. There was no guarantee I was actually doing a business a service, rather than taking their money and throwing mud at the wall to see what stuck. I couldn't commit to offering people hope, taking their money, and not being able to guarantee I could deliver. I hadn't achieved that kind of success for myself. I wasn't going to promise it to someone else.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 2 -->
+<section class="chapter-alt" id="jims-fencing">
+  <div class="section-inner">
+    <div class="chapter-tag">Chapter Two</div>
+    <h2 class="section-title">Jim's Fencing</h2>
+    <div class="narrative">
+      <p>Around 2019, while all that was still simmering in the background, I started a fencing business, Jim's Fencing, under the Jim's banner. If you live in Australia you'll know the name; it started with Jim's Mowing and grew into a franchise covering so many trades it's become a meme. "There's a Jim's for that."</p>
+      <p>Five years in that business, through the worst of it (the pandemic, the shutdowns, all of it), and I came out the other end successful. Not because the work got easier, but because I finally understood the system Jim's had built underneath the trade itself: how they generate leads, distribute them, and hold every franchisee to a standard that gets results. That's a big enough lesson that it's its own story. <a href="https://lipservices.com.au/blog/jims-franchise-lead-system/">I've written it up separately</a>, because it's where the system behind LIP Services actually came from.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section class="chapter-dark" id="the-road">
+  <div class="section-inner">
+    <div class="chapter-tag">Chapter Three</div>
+    <h2 class="section-title" style="color:#fff">Hitting the Road</h2>
+    <div class="narrative">
+      <p>Early 2024, the time came to get on the road. The plan was twelve months travelling Australia. It turned into nearly two years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 4 -->
+<section class="chapter-tint" id="magpie-rest">
+  <div class="section-inner">
+    <div class="chapter-tag">Chapter Four</div>
+    <h2 class="section-title">Magpie Rest</h2>
+    <div class="narrative">
+      <p>Somewhere in that stretch we bought five acres, vacant land with nothing on it, with a plan to build a self-sufficient, off-grid homestead. We call it Magpie Rest. Right now, that's still mostly what it is: a plan mapped onto a block. We're living in a caravan on the land while I build the house myself, as an owner-builder. Realistically that's another 12 to 18 months before we're living in a finished home.</p>
+      <p>I'm not telling you this because it's finished and impressive. It isn't finished. It's the same thing running through everything else in this story. Deciding to actually do the thing yourself, on your own timeline, without a guarantee it'll be quick or easy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 5 -->
+<section class="chapter-light" id="the-idea-that-stuck">
+  <div class="section-inner">
+    <div class="chapter-tag">Chapter Five</div>
+    <h2 class="section-title">The Idea That Wouldn't Let Go</h2>
+    <div class="narrative">
+      <p>Even on the road, I couldn't leave the original problem alone. How do you actually help a small business owner navigate the parts of running a business that eat their time and their evenings? The call they can't take. The quote that goes cold. The invoice nobody chases.</p>
+      <p>Travelling gave me the space to actually look at it properly, and that's where I found AI. Not as a buzzword, but as a genuinely different way to solve the same problem I'd been circling for twelve years. Tools that could answer a call, follow up a quote, chase an invoice, without needing a call centre or a franchise fee to do it. The thing I couldn't guarantee twelve years ago, I finally had a way to actually build and prove.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 6 -->
+<section class="chapter-dark" id="lip-services">
+  <div class="section-inner">
+    <div class="chapter-tag">Chapter Six</div>
+    <h2 class="section-title" style="color:#fff">LIP Services Today</h2>
+    <div class="narrative">
+      <p>That's where LIP Services came from. Not a pivot dreamed up in a boardroom, but the answer to a problem I'd been personally stuck on since long before I ever set foot on a jobsite for Jim's. Twelve years of doubting the sell. Five years learning what a real system looks like from the inside. Two years of distance to actually see the shape of the problem. And AI as the tool that finally let me build something I could stand behind.</p>
+      <p>Want to see what that system actually looks like in practice, the four phases it's built around, and how they map onto the everyday problems of running a trade business? <a href="https://lipservices.com.au/blog/jims-franchise-lead-system/">That's the next part of the story</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final" id="get-started">
+  <div class="section-label">Get Started</div>
+  <h2>See what it looks like for your business.</h2>
+  <p>No sales pitch, no call centre, no franchise fee. Just the same system, built for you.</p>
+  <div class="hero-ctas">
+    <a href="https://calendar.app.google/oqTcitaDB6RRbLiy5" target="_blank" rel="noopener" class="btn-primary">Book a Free Call</a>
+    <a href="https://lipservices.com.au/get-started/?src=about-page" class="btn-ghost">Get Your Free Plan →</a>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="section-label">Keep Reading</div>
+  <div class="related-links">
+    <a href="https://lipservices.com.au/blog/jims-franchise-lead-system/">The System Behind LIP Services</a>
+    <a href="https://lipservices.com.au/ai-receptionist-for-tradies/">AI Receptionist for Tradies</a>
+    <a href="https://lipservices.com.au/">Back to Home</a>
+  </div>
+</section>
+
+</div>
