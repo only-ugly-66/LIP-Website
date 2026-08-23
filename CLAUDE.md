@@ -3,6 +3,8 @@
 **Platform:** WordPress (Divi theme)
 **Last updated:** 2026-08-17
 
+> ⚠ **If you were opened directly on this folder:** you can't see or update Command Centre's shared operational context this way (`in-progress.md`, `focus-areas.md`, `coding-priorities.md` — the "Active Right Now" / priority tracking read on Command Centre's Home screen). That gap caused real tracking drift in past sessions (see `in-progress.md`'s 2026-08-20 decision entry). Prefer opening `LIP-Command-Centre` instead, even for website-only work — the shared context lives at `../AI-Personal Assistant/context/` relative to that project root. If you do need to work from here directly, at minimum read and update `../AI-Personal Assistant/context/in-progress.md` yourself before ending the session.
+
 ---
 
 ## Folder Structure
@@ -54,6 +56,7 @@ Superseded homepage/landing-page variants, sorted out 2026-08-17 after finding 5
 | `page-landing.php` | Its own commit called it superseded; old pricing; has a form the live site doesn't have |
 | `landing-page-contact-section.html` | Its commit called it "the live deployment path" but the live site has since diverged (no form, different pricing) — Robert edited live content directly in Divi without syncing back |
 | `landing-page-v2.html` | Orphaned, correct pricing but old title tag and unclear provenance — unreferenced in current docs |
+| `cowork-blog-extraction-prompt-superseded.md` | Manual Cowork prompt for extracting meta/keyword/image-prompt from a finished post — superseded 2026-08-20 when `generateBlogPost` (Command Centre) started returning all of it in the same generation pass |
 
 ---
 

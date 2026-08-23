@@ -63,6 +63,7 @@
 ### 5. Repurpose existing trade video scripts into blog posts
 - [ ] Cheapest content available — already written once for another medium
 - **Workflow:** blog posts stay on their own track — Robert generates copy via the content creator and uploads images manually, separate from the Claude-Code-built pages above. Same jump-links template applies here too (`wordpress/jump-links-toc-template.html`) — 3–6 sections per post is the sweet spot.
+- **Topic queue (added 2026-08-20):** `copy/blog-topic-ideas-2026.md` — 10 pain-first long-tail topics, each mapped to a funnel page and checked against existing focus keywords. Pull from here before inventing a new topic ad hoc.
 
 ### 6. AEO layer — only once 1–5 are solid
 - [ ] Monthly 15-min log: ask ChatGPT/Claude/Perplexity the buyer question, record whether LIP Services is named
