@@ -1,6 +1,6 @@
 # Terms & Conditions
 
-**Last updated:** [DATE — set on publish]
+**Last updated:** 25 August 2026 (confirmed live at lipservices.com.au/terms/ 2026-08-29)
 
 These terms govern your use of lipservices.com.au and any services you purchase from LIP Services ("we", "us", "our", ABN 96 976 308 814). By using our website or engaging our services, you agree to these terms.
 

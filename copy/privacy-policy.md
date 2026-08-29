@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** [DATE — set on publish]
+**Last updated:** 25 August 2026 (confirmed live at lipservices.com.au/privacy/ 2026-08-29)
 
 LIP Services ("we", "us", "our", ABN 96 976 308 814) provides AI-powered marketing and business automation for Australian service businesses. This policy explains what personal information we collect, why, and what your rights are. It applies to visitors to lipservices.com.au, leads who contact us, and clients using our CRM, voice, and messaging services.
 
