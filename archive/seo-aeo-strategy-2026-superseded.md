@@ -1,3 +1,18 @@
+<!-- ══════════════════════════════════════════════════════════
+     ARCHIVED 2026-08-29 — superseded by copy/ai-discovery-strategy-2026.md
+     This was the original 2026-08-05 SEO/AEO audit. Items 1-4 (duplicate
+     homepage, title tag, meta description, sitemap) and item 5 (trades
+     landing pages) are done — see pages/seo-meta-schema-index.md and
+     copy/plan-of-attack-2026.md for the executed record.
+     Everything still open here (FAQ/schema, answer-first writing,
+     comparison pages, the monthly AI-citation check, off-site trust
+     signals) was carried forward, not dropped — it's now folded into
+     copy/ai-discovery-strategy-2026.md's checklist alongside the
+     2026-08-28 AI-agent-discovery framework (llms.txt, per-service
+     schema, the access/extraction/trust model). Keep this file for
+     the original audit record; don't treat it as the live plan.
+     ══════════════════════════════════════════════════════════ -->
+
 # LIP Services — SEO & AEO Strategy
 **Site:** lipservices.com.au (WordPress/Divi)
 **Prepared:** 2026-08-05

@@ -2,7 +2,7 @@
 **Date:** 2026-08-16
 **Purpose:** Single reference for this push. Work top to bottom, in order — don't start a later step before the one above it is closed. Anything that comes up mid-build that isn't on this list goes in the Parking Lot, not into the current step.
 
-**Companion docs (the "why," not repeated here):** `seo-aeo-strategy-2026.md` (full technical audit, 2026-08-05) and `seo-quick-wins-playbook.md` (reusable sales tool built from the same audit). **Per-page title/meta/schema tracking:** `pages/seo-meta-schema-index.md` — draft it there before pasting into RankMath, one place instead of scattered across chat history.
+**Companion docs (the "why," not repeated here):** `ai-discovery-strategy-2026.md` (current AI/AEO discovery strategy, 2026-08-29 — supersedes the original audit for anything still open) and `seo-quick-wins-playbook.md` (reusable sales tool built from the original audit). The original 2026-08-05 technical audit is archived at `archive/seo-aeo-strategy-2026-superseded.md` — items 1–5 from it are done (see Current State below), everything still open from it lives in `ai-discovery-strategy-2026.md` now. **Per-page title/meta/schema tracking:** `pages/seo-meta-schema-index.md` — draft it there before pasting into RankMath, one place instead of scattered across chat history. **Lost track of where things stand or what to do next? Start with `site-map-and-focus-2026.md`** — page hierarchy, internal linking map, content taxonomy (pillars + topic queue), social channel status, and a ranked follow-up list, all in one place.
 
 ---
 
@@ -66,8 +66,7 @@
 - **Topic queue (added 2026-08-20):** `copy/blog-topic-ideas-2026.md` — 10 pain-first long-tail topics, each mapped to a funnel page and checked against existing focus keywords. Pull from here before inventing a new topic ad hoc.
 
 ### 6. AEO layer — only once 1–5 are solid
-- [ ] Monthly 15-min log: ask ChatGPT/Claude/Perplexity the buyer question, record whether LIP Services is named
-- [ ] 2–3 honest comparison pages
+**Full checklist moved to `ai-discovery-strategy-2026.md` (2026-08-29)** — don't duplicate it here. Summary: real FAQ content per page → per-service schema → FAQ schema → `llms.txt` → monthly AI-citation check → comparison pages → backlinks.
 
 (Schema markup moved to step 1 — Robert's doing it alongside meta data rather than waiting for this step.)
 
@@ -85,19 +84,20 @@ Blocked on Phase 1 step 3 (source tagging) — no point sending social traffic s
 | LinkedIn | Direct B2B lead gen | Native Lead Gen Forms | Business / case-study |
 | Google Business Profile | Local intent, near-ready-to-book | Booking/website link → Get Started (`?src=google-business-profile`) | Informational, local-SEO keyword-aware |
 
-- [ ] YouTube channel cleanup before new uploads (found 2026-08-19): ~20 videos are old intro/outro/banner render clips titled "Your Business [X] Logo" — off-brand for the channel's public Videos tab. Source software confirmed still accessible (Viddyoze, create.viddyoze.com) as of 2026-08-19, so these are safe to **delete outright** rather than just hide. One more video, "15 Steps To Maximise Your ROI Using Facebook Ad Spend" (Robert's old Facebook ads methodology, pre-dates the pivot to LIP Services' AI systems), should go **Private** instead — off-brand, not deleted, in case any of it is worth mining later.
+- [x] YouTube channel cleanup before new uploads (found 2026-08-19, done 2026-08-29) — Robert moved all the old off-brand clips (the ~20 Viddyoze "Your Business Logo" template previews plus the old Facebook-ad-spend video) to Draft/unavailable rather than the originally-suggested delete-outright/Private split — same practical outcome (none show on the public Videos tab), source files aren't lost if anything's worth mining later.
 - **Note (2026-08-19):** Viddyoze logo-reveal clips are fully customisable (re-render with actual LIP Services branding, not the "Your Business Logo" placeholder) and can be dropped into CapCut for final editing — available as an intro/outro asset source for future video content or client demo material, independent of the cleanup above.
-- [ ] **High priority (flagged 2026-08-19):** get actual video content posted across platforms (YouTube, Facebook, Instagram, Threads, TikTok) — capturing eyeballs is the current bottleneck, not just having profiles set up. Sequence with the YouTube cleanup above (clean channel first, then post).
+- [ ] **High priority (flagged 2026-08-19):** get actual video content posted across platforms (YouTube, Facebook, Instagram, Threads, TikTok) — capturing eyeballs is the current bottleneck, not just having profiles set up. YouTube cleanup above is done — channel's ready, next step is actually posting (the 3 cleared founder videos, see `in-progress.md`).
 
 ### 7. Founder bio page — /about/ (added 2026-08-19)
 - [x] Drafted as a blog post first (`copy/blog-founder-story.md`), then decided it should stand up as a real nav-level page instead — a founder bio isn't disposable blog content, it has evergreen value as site architecture. Built to `pages/about.html`, old draft archived to `archive/blog-founder-story-superseded.md`.
 - [x] Positioning settled: About page = pure founder bio (no product pitch). Jim's Franchise blog post = proof-driven methodology/conversion piece (opens with personal credibility, but its job is explaining the 4-phase system and funnelling into the product pages). Different jobs, cross-linked both ways.
 - [x] Paste `pages/about.html` into a Divi Code module — done 2026-08-19, uploaded to WordPress, not yet published (waiting on image)
-- [ ] **Add to main Divi nav** (Appearance → Menus) — decided 2026-08-19 this gets permanent top-level visibility, not just a footer/blog link
-- [ ] Featured/hero image — real photo from the block/caravan/build, not stock (fits the page's "this is honest and current" tone). **Blocking publish.**
-- [ ] Once both About and the Jim's post are live: add the intro backlink from Jim's post → About (see `pages/seo-meta-schema-index.md` internal linking map)
+- [ ] **Add to main Divi nav** (Appearance → Menus) — decided 2026-08-19 this gets permanent top-level visibility, not just a footer/blog link. Still not done as of 2026-08-29 even though the page itself is now live.
+- [x] Featured/hero image — real photo from the block/caravan/build, not stock (fits the page's "this is honest and current" tone). Robert supplied it and published the page 2026-08-29 — confirmed live via direct fetch ("Magpie Rest Dawn" photo).
+- [ ] Now that both About and the Jim's post are live (2026-08-29): add the intro backlink from Jim's post → About (see `pages/seo-meta-schema-index.md` internal linking map) — still not built.
 - **Status (2026-08-19, end of session):** Both `pages/about.html` and `copy/blog-jims-franchise-system.md` are now uploaded into WordPress. Both waiting on images before going live — About needs a real block/caravan shot, Jim's post needs its featured image per `pages/seo-meta-schema-index.md`. Permalink structure set to `/blog/%postname%/` (Custom Structure, Posts only) so the Jim's post gets its planned `/blog/` prefix — confirmed working. Found and diagnosed (not yet fixed) a separate, unrelated footer bug: Terms/Privacy footer links are missing `https://`/leading `/`, causing broken concatenated URLs like `/terms/lipservices.com.au/privacy` — Robert fixing directly in Divi.
 - **⚠️ Verify before publishing (2026-08-19):** the Jim's post's planned slug assumes `/blog/jims-franchise-lead-system/` — that `/blog/` prefix only appears if WordPress's Permalink settings (Settings → Permalinks) are actually configured to put Posts under `/blog/`. If not, it may publish at a different URL with no `/blog/` segment, same failure mode as the trades-page slug mismatch (2026-08-17). Check Permalink settings and confirm the real live URL matches the front matter before wiring any cross-links to it.
+- **Both published 2026-08-29:** Robert supplied both images. Confirmed live via direct fetch — `/about/` (real property photo) and `/blog/jims-franchise-lead-system/` (real Jim's Fencing photo, slug matches what was planned). Remaining open items: About's main-nav entry, and the Jim's-post-→-About backlink (see above).
 
 ### 8. Blog index page (flagged 2026-08-19)
 - **Gap found:** with Home as a static homepage, WordPress needs a designated Posts page (Settings → Reading) for any blog archive URL to exist at all — likely never configured, meaning there's currently no page listing all posts.
@@ -115,14 +115,13 @@ Blocked on Phase 1 step 3 (source tagging) — no point sending social traffic s
 - [ ] **To do:** go through every other piece of content the content machine has produced (the AI-marketing-tools post, and anything published after) and confirm each has exactly one correct Command Centre pillar assigned — don't assume existing tags are right, the Jim's post mismatch shows they weren't being set carefully.
 - [ ] **To do, WP-side (once Jim's Franchise post is live):** Titles & Meta → Posts (Advanced Mode) → enable **Link Suggestions**, method = focus keyword. Then edit the Jim's Franchise post → RankMath General tab → check **"This post is Pillar Content"** (it's the strongest cornerstone piece — everything else should eventually link to it). Future blog posts will then get automatic link suggestions back to it in the editor.
 
-- [x] Draft one-line bio + profile description per platform — same core identity (name, logo, phone) everywhere, tone adjusted per row above. Drafted 2026-08-19 in `copy/social-profile-bios.md`, not yet pasted to any platform.
-- [ ] Confirm NAP (name/address/phone) matches the website exactly on every profile
+- [x] Draft one-line bio + profile description per platform — same core identity (name, logo, phone) everywhere, tone adjusted per row above. Drafted 2026-08-19 in `copy/social-profile-bios.md`.
+- [x] Paste bios live to all platforms — done 2026-08-29 (Robert), all 7 (Facebook, Instagram, YouTube, LinkedIn, Threads, TikTok, Google Business Profile) — `copy/social-profile-bios.md` statuses flipped to ✅.
+- [ ] Confirm NAP (name/address/phone) matches the website exactly on every profile — not independently re-verified, worth a spot-check now that bios are actually live.
 
 ---
 
 ## Parking lot — logged, not forgotten, not now
 - All 36 service × vertical landing page combinations (doing 3–4 to start)
-- Comparison pages ("LIP Services vs X") — part of the AEO layer, Phase 1 step 6
-- Backlink building / guest appearances
-- Google Business Profile audit (flagged in the Aug 5 audit, untouched here)
+- Comparison pages, backlink building, monthly AI-citation check — all now tracked in `ai-discovery-strategy-2026.md`, not duplicated here
 - Anything else that comes up mid-build — write it here, don't chase it mid-step
