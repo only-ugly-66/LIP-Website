@@ -90,18 +90,20 @@ Used to categorise every piece of content the video/content machine produces —
 ### The 10-topic content queue (trades vertical, pain-first)
 Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-shaped) and `Video Script/video-topic-queue-2026.md` (Brief-shaped for Command Centre). **Sequencing: film first, blog repurposes the footage after** — matches the "cheapest content is content already written once" principle.
 
-| # | Topic (pain-first) | Funnels to | Pillar | Ready? |
+**Direction change (2026-08-29/30, Robert):** the 4 live trades landing pages already cover the core pain points this queue targets (missed calls, cold quotes, unpaid invoices, low visibility) — more pain-point content from here hits diminishing returns. New topic ideation should pivot to the **CRM/backend time-saved angle** (what the automation actually gives someone back in their week) instead, which is still untouched ground. This queue's remaining rows aren't cancelled, just no longer the priority for *new* ideas. Also: the AI Voice Agent/Receptionist stays off-limits in any content, any format, until Telnyx's AU number approval actually lands — don't pitch it as live.
+
+| # | Topic (pain-first) | Funnels to | Pillar | Status |
 |---|---|---|---|---|
-| 2 | Why tradie quotes go cold | Quote Follow-Up page | Client Attraction | ✅ Ready |
-| 6 | Why tradies don't post on social media | Video Marketing page | Client Attraction | ✅ Ready |
-| 3 | How long to wait before following up a quote | Quote Follow-Up page | Client Attraction | ✅ Ready |
-| 7 | Is word of mouth enough anymore | Video Marketing page | Client Attraction | ✅ Ready |
-| 4 | How to chase an unpaid invoice without sounding rude | Invoice Reminders page | Cash Flow | ✅ Ready |
-| 9 | Signs your business is losing money to admin, not tools | Multiple (top-funnel) | Business Reality | ✅ Ready |
+| 2 | Why tradie quotes go cold | Quote Follow-Up page | Client Attraction | ✅ Produced 2026-08-30, in "Ready to post" |
+| 6 | Why tradies don't post on social media | Video Marketing page | Client Attraction | ✅ Produced 2026-08-30, in "Ready to post" |
+| 7 | Is word of mouth enough anymore | Video Marketing page | Client Attraction | ✅ Produced 2026-08-30, in "Ready to post" |
+| 3 | How long to wait before following up a quote | Quote Follow-Up page | Client Attraction | 🟡 Queued for render — first attempt hit a fal.ai concurrency bug (now fixed), retry pending |
+| 4 | How to chase an unpaid invoice without sounding rude | Invoice Reminders page | Cash Flow | 🟡 Queued for render — same concurrency bug, retry pending |
+| 9 | Signs your business is losing money to admin, not tools | Multiple (top-funnel) | Business Reality | 🟡 Queued for render — same concurrency bug, retry pending |
 | 1 | Cost of a missed call for a tradie | AI Receptionist page | Cash Flow | ⚠️ Needs a sourced stat |
 | 8 | Hours a week tradies lose to admin | AI Receptionist + Invoice Reminders | Business Reality | ⚠️ Needs a sourced stat |
 | 5 | Average time tradies wait to get paid in Australia | Invoice Reminders page | Cash Flow | ⚠️ Needs a sourced stat (different from the 92% figure already live) |
-| 10 | A day in the life of a busy tradie | About page | Business Reality | ⏸ Hold until About is published |
+| 10 | A day in the life of a busy tradie | About page | Business Reality | ✅ Ready — About published 2026-08-29, hold is cleared |
 
 **Sourcing rule (non-negotiable):** any stat needs a real citable source — paste it into the Brief/Blog generator's "Source to cite" field, or Claude won't invent one. Find the source before sitting down to generate, not mid-flow.
 
@@ -135,24 +137,28 @@ Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-sha
 
 The three physical blockers that were here (missing photos, YouTube cleanup, bios not pasted) are all cleared as of 2026-08-29. What's left is smaller, structural finishing work plus the one real bottleneck Robert flagged 2026-08-19 that's still true:
 
-1. **Actually posting** — every profile and page is finally ready, but nothing is going out yet. This is the real bottleneck now: eyeballs need posted content, not just configured profiles.
+1. **Actually posting** — every profile and page is finally ready, and 3 new topic-queue videos are now produced on top of the 3 older founder videos, but nothing is going out yet. This is the real bottleneck now: eyeballs need posted content, not just configured profiles.
 2. **Small linking gaps on About/Jim's post** — both pages are live, but About isn't in the main nav yet, and nothing links to either page from elsewhere on the site (Home, the trades pages).
 3. **The AEO/content-depth work** (`ai-discovery-strategy-2026.md`) — real FAQ content, schema, `llms.txt` — none of it started yet.
 
-Everything else (comparison pages, the 6 remaining topic-queue videos) is real but not urgent compared to these three.
+Everything else (comparison pages, the 3 still-queued videos re-rendering) is real but not urgent compared to these three.
+
+**New for content ideation specifically:** pivot toward the CRM time-saved angle over more pain-point topics — see the note above the topic-queue table.
 
 ---
 
 ## 6. Follow-up list — ranked
 
-1. **Post the 3 cleared videos** to YouTube (Systems → Gap → First To Reply Wins) — channel's clean, bios are live, nothing left blocking this
-2. **Add About to the main Divi nav** (Appearance → Menus), and wire the two-way backlink between About and the Jim's Franchise post (see Internal Linking Map)
-3. **Spot-check NAP consistency** now that bios are live across all 7 platforms
-4. **Run the next topic-queue video** (#2, "Why tradie quotes go cold" — no source needed, first in release order) through Create, post it, then repurpose into its blog post
-5. **Work the AEO checklist** in `ai-discovery-strategy-2026.md` — starting with real FAQ content per landing page
-6. **Pillar audit** — check every existing piece of content's Command Centre pillar tag is single, correct, and matches its actual content (only the Jim's Franchise post has been checked so far)
-7. **Decide on Blotato** — subscribe or keep manual-posting for now
-8. **Comparison pages** ("LIP Services vs X") — once the above has breathing room
+1. **Post the 3 cleared founder videos** to YouTube (Systems → Gap → First To Reply Wins) — channel's clean, bios are live, nothing left blocking this
+2. **Post the 3 newly-produced topic-queue videos** (Why tradie quotes go cold / Why tradies don't post on social media / Is word of mouth enough anymore) — sitting in "Ready to post," then repurpose each into its matching blog post
+3. **Re-run the 3 still-queued topic videos** (follow-up timing / invoice-chasing / admin-signs) — a fal.ai concurrency bug blocked them 2026-08-30, now fixed with a Retry button in the Batch tab; they're sitting in Pending ready to go
+4. **Add About to the main Divi nav** (Appearance → Menus), and wire the two-way backlink between About and the Jim's Franchise post (see Internal Linking Map)
+5. **Spot-check NAP consistency** now that bios are live across all 7 platforms
+6. **New topic ideation: CRM time-saved angle** — pivot away from more pain-point topics (see note above the topic-queue table)
+7. **Work the AEO checklist** in `ai-discovery-strategy-2026.md` — starting with real FAQ content per landing page
+8. **Pillar audit** — check every existing piece of content's Command Centre pillar tag is single, correct, and matches its actual content (only the Jim's Franchise post has been checked so far)
+9. **Decide on Blotato** — subscribe or keep manual-posting for now
+10. **Comparison pages** ("LIP Services vs X") — once the above has breathing room
 
 ---
 
