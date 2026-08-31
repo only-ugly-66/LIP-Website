@@ -97,9 +97,9 @@ Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-sha
 | 2 | Why tradie quotes go cold | Quote Follow-Up page | Client Attraction | ✅ Produced 2026-08-30, in "Ready to post" |
 | 6 | Why tradies don't post on social media | Video Marketing page | Client Attraction | ✅ Produced 2026-08-30, in "Ready to post" |
 | 7 | Is word of mouth enough anymore | Video Marketing page | Client Attraction | ✅ Produced 2026-08-30, in "Ready to post" |
-| 3 | How long to wait before following up a quote | Quote Follow-Up page | Client Attraction | 🟡 Queued for render — first attempt hit a fal.ai concurrency bug (now fixed), retry pending |
-| 4 | How to chase an unpaid invoice without sounding rude | Invoice Reminders page | Cash Flow | 🟡 Queued for render — same concurrency bug, retry pending |
-| 9 | Signs your business is losing money to admin, not tools | Multiple (top-funnel) | Business Reality | 🟡 Queued for render — same concurrency bug, retry pending |
+| 3 | How long to wait before following up a quote | Quote Follow-Up page | Client Attraction | ✅ Produced 2026-08-31, in "Ready to post" |
+| 4 | How to chase an unpaid invoice without sounding rude | Invoice Reminders page | Cash Flow | ✅ Produced 2026-08-31, in "Ready to post" |
+| 9 | Signs your business is losing money to admin, not tools | Multiple (top-funnel) | Business Reality | ✅ Produced 2026-08-31, in "Ready to post" |
 | 1 | Cost of a missed call for a tradie | AI Receptionist page | Cash Flow | ⚠️ Needs a sourced stat |
 | 8 | Hours a week tradies lose to admin | AI Receptionist + Invoice Reminders | Business Reality | ⚠️ Needs a sourced stat |
 | 5 | Average time tradies wait to get paid in Australia | Invoice Reminders page | Cash Flow | ⚠️ Needs a sourced stat (different from the 92% figure already live) |
@@ -129,6 +129,8 @@ Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-sha
 
 **3 videos already cleared to post, sitting ready:** Founder — Systems (Jim's franchise story, recommended first), Founder — The Gap, First To Reply Wins — titles/descriptions drafted from real Whisper transcripts. A 4th, Founder — Tools, is held back because it name-drops the AI receptionist, which isn't live yet.
 
+**3 more talking-head videos produced 2026-08-31:** After hours calls, Just 3 Seconds, One missed call — all in "Ready to post," none posted yet.
+
 **Publishing/scheduling tool decision (2026-08-13):** buy Blotato (~$29/mo, up to 20 accounts, 9 platforms) rather than build native platform integrations — Meta's own API needs developer app review (weeks), not worth building/maintaining solo. Recommendation only, not yet subscribed.
 
 ---
@@ -137,11 +139,11 @@ Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-sha
 
 The three physical blockers that were here (missing photos, YouTube cleanup, bios not pasted) are all cleared as of 2026-08-29. What's left is smaller, structural finishing work plus the one real bottleneck Robert flagged 2026-08-19 that's still true:
 
-1. **Actually posting** — every profile and page is finally ready, and 3 new topic-queue videos are now produced on top of the 3 older founder videos, but nothing is going out yet. This is the real bottleneck now: eyeballs need posted content, not just configured profiles.
+1. **Actually posting** — every profile and page is ready, and all 6 topic-queue videos plus 6 talking-head/founder videos are now produced (12 total sitting in "Ready to post"), but nothing is going out yet. This is the real bottleneck now: eyeballs need posted content, not just configured profiles. See the new Publish Loop Tracker (section 7) for the 6 topic-queue videos specifically.
 2. **Small linking gaps on About/Jim's post** — both pages are live, but About isn't in the main nav yet, and nothing links to either page from elsewhere on the site (Home, the trades pages).
 3. **The AEO/content-depth work** (`ai-discovery-strategy-2026.md`) — real FAQ content, schema, `llms.txt` — none of it started yet.
 
-Everything else (comparison pages, the 3 still-queued videos re-rendering) is real but not urgent compared to these three.
+Everything else (comparison pages) is real but not urgent compared to these three.
 
 **New for content ideation specifically:** pivot toward the CRM time-saved angle over more pain-point topics — see the note above the topic-queue table.
 
@@ -150,11 +152,48 @@ Everything else (comparison pages, the 3 still-queued videos re-rendering) is re
 ## 6. Follow-up list — ranked
 
 1. **Post the 3 cleared founder videos** to YouTube (Systems → Gap → First To Reply Wins) — channel's clean, bios are live, nothing left blocking this
-2. **Post the 3 newly-produced topic-queue videos** (Why tradie quotes go cold / Why tradies don't post on social media / Is word of mouth enough anymore) — sitting in "Ready to post," then repurpose each into its matching blog post
-3. **Re-run the 3 still-queued topic videos** (follow-up timing / invoice-chasing / admin-signs) — a fal.ai concurrency bug blocked them 2026-08-30, now fixed with a Retry button in the Batch tab; they're sitting in Pending ready to go
-4. **Add About to the main Divi nav** (Appearance → Menus), and wire the two-way backlink between About and the Jim's Franchise post (see Internal Linking Map)
-5. **Spot-check NAP consistency** now that bios are live across all 7 platforms
-6. **New topic ideation: CRM time-saved angle** — pivot away from more pain-point topics (see note above the topic-queue table)
+2. **Run the publish loop on all 6 produced topic-queue videos** (2, 3, 4, 6, 7, 9 — all "Ready to post" as of 2026-08-31) — blog first, then post with the link in comments. See section 7 tracker below.
+3. **Add About to the main Divi nav** (Appearance → Menus), and wire the two-way backlink between About and the Jim's Franchise post (see Internal Linking Map)
+4. **Spot-check NAP consistency** now that bios are live across all 7 platforms
+5. **New topic ideation: CRM time-saved angle** — pivot away from more pain-point topics (see note above the topic-queue table)
+
+---
+
+## 7. Publish loop tracker
+
+Robert's loop (2026-08-31): **reel from a pillar → blog post repurposed from the reel → blog published on the site → reel posted to YT/FB/LinkedIn with the blog link dropped as the first comment.**
+
+**Sequencing matters:** the blog needs to be live *before* the video goes up, so there's an actual URL to paste into the comment — posting the video first just means coming back to it later. Blog first, then post, comment immediately.
+
+Every render's post-render `.docx`/`.txt` package (in its `Ready to post/` folder) now has a blank "Blog post link" field at the top for exactly this — fill it in once the blog's live, then copy straight into the comment.
+
+All 6 rows below are currently at the same stage: reel done, nothing else started.
+
+| # | Topic | Reel | Blog drafted | Blog live (URL) | Posted YT | Posted FB | Posted LinkedIn |
+|---|---|---|---|---|---|---|---|
+| 2 | Why tradie quotes go cold | ✅ | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 |
+| 6 | Why tradies don't post on social media | ✅ | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 |
+| 7 | Is word of mouth enough anymore | ✅ | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 |
+| 3 | How long to wait before following up a quote | ✅ | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 |
+| 4 | How to chase an unpaid invoice without sounding rude | ✅ | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 |
+| 9 | Signs your business is losing money to admin, not tools | ✅ | 🔴 | 🔴 | 🔴 | 🔴 | 🔴 |
+
+Update a row's cells as each step actually happens — this table is the "did we actually finish the loop" check, separate from the topic-queue table above (which only tracks whether the reel itself got made).
+
+Talking-head/founder-style videos (the 3 pre-existing ones in section 4, plus 3 new ones produced 2026-08-31: *After hours calls*, *Just 3 Seconds*, *One missed call*) aren't in this tracker — they're not built from a content pillar and don't have a planned blog repurpose, so they follow the simpler "just post it" path in the Follow-Up List instead.
+
+### Recommended posting sequence (2026-08-31)
+
+Founder/talking-head videos need no prep (post immediately). Topic-queue reels each need their blog written and published first — so the two tracks run in parallel, one of each per week, rather than posting all 12 at once. Never two reels funnelling to the same landing page back-to-back (#2/#3 both → Quote Follow-Up, #6/#7 both → Video Marketing) — spaced a week apart so each gets its own blog and its own moment. Founder — Systems goes first: strongest trust story, and credibility content should lead on freshly-live profiles before any pitch-shaped content.
+
+| Week | Credibility (post now, no prep) | Topic-queue (write + publish blog first, then post) |
+|---|---|---|
+| 1 | Founder — Systems | #9 — Signs you're losing money to admin |
+| 2 | Founder — The Gap | #2 — Why tradie quotes go cold |
+| 3 | First To Reply Wins | #6 — Why tradies don't post on social media |
+| 4 | After hours calls | #3 — How long to wait before following up a quote |
+| 5 | One missed call | #7 — Is word of mouth enough anymore |
+| 6 | Just 3 Seconds | #4 — Chasing an unpaid invoice without sounding rude |
 7. **Work the AEO checklist** in `ai-discovery-strategy-2026.md` — starting with real FAQ content per landing page
 8. **Pillar audit** — check every existing piece of content's Command Centre pillar tag is single, correct, and matches its actual content (only the Jim's Franchise post has been checked so far)
 9. **Decide on Blotato** — subscribe or keep manual-posting for now
