@@ -552,7 +552,7 @@
       <h3>Activate AI Chat Agent</h3>
       <p>Enter your Anthropic API key to power the agent. Stored locally on your device — never sent anywhere else.</p>
       <input class="setup-field" type="password" id="s-key" placeholder="Anthropic API key (sk-ant-...)">
-      <input class="setup-field" type="url" id="s-booking" value="https://calendar.app.google/oqTcitaDB6RRbLiy5">
+      <input class="setup-field" type="url" id="s-booking" value="https://crm.lipservices.com.au/book/bab3db00-923c-4a0c-a9c4-fdf3a1a7567e">
       <button id="setup-go" onclick="initChat()">Activate Agent →</button>
       <div class="setup-note">For website deployment, the API key moves to a backend server.<br>This setup is for demo and testing only.</div>
     </div>
@@ -636,7 +636,7 @@ let busy     = false;
 let isOpen   = false;
 let lead     = { name: null, email: null, biz: null, saved: false };
 let apiKey   = localStorage.getItem('lip_key')     || '';
-let bookUrl  = localStorage.getItem('lip_booking') || 'https://calendar.app.google/oqTcitaDB6RRbLiy5';
+let bookUrl  = localStorage.getItem('lip_booking') || 'https://crm.lipservices.com.au/book/bab3db00-923c-4a0c-a9c4-fdf3a1a7567e';
 let leads    = JSON.parse(localStorage.getItem('lip_leads') || '[]');
 
 // ══════════════════════════════════════════════════════
