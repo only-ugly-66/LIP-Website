@@ -44,6 +44,12 @@ lipservices.com.au/
 │   window.lipToggle() function, rather than a new mechanism, since the widget
 │   is already active on every page. Not yet in header nav.)
 │
+├─ AI Automated Office Manager ( /ai-office-manager/ ) 🔴 written 2026-09-11, not yet pasted into Divi/published
+│   (third and final pillar page — completes the set so all 3 pricing tiers each
+│   have a canonical home. Bundles the Voice Agent + CRM pitch into one page,
+│   live-demo section offers both "Call Aria Now" (tel:) and "Chat With Aria Now"
+│   (window.lipToggle()) since this tier includes both channels. Not yet in header nav.)
+│
 ├─ About ( /about/ )                              ✅ live (published 2026-08-29, real "Magpie Rest Dawn" photo)
 │   (still not in main nav — add via Appearance → Menus)
 │
@@ -88,6 +94,9 @@ What links to what, and what's still pending. Full detail lives in `pages/seo-me
 | Home | Automated CRM | 🟡 pricing card title is now a link, same pattern as AI Voice Agent — not live until re-pasted |
 | AI Voice Agent | Automated CRM | 🟡 written into that page's Related section — not live until both pages are published |
 | Automated CRM | AI Voice Agent, AI Receptionist for Tradies, Get Started, Home | 🟡 written into the new page's Related section — not live until page is published |
+| Home | AI Automated Office Manager | 🟡 pricing card title is now a link, same pattern as the other two — not live until re-pasted |
+| AI Voice Agent, Automated CRM | AI Automated Office Manager | 🟡 written into both pages' Related sections — not live until all three are published |
+| AI Automated Office Manager | AI Voice Agent, Automated CRM, AI Receptionist for Tradies, Get Started, Home | 🟡 written into the new page's Related section — not live until page is published |
 
 **Rule going forward:** a new page goes live already linked from somewhere — no orphan pages left for the sitemap alone to surface. Add a row here when a page is planned, before it goes live, same discipline as the focus-keyword check.
 
