@@ -37,6 +37,13 @@ lipservices.com.au/
 │   desktop. Not yet in the header nav — that's a separate manual step in Divi's
 │   menu admin, Appearance → Menus, outside what a page module edit can do.)
 │
+├─ Automated CRM ( /automated-crm/ )               🔴 written 2026-09-11, not yet pasted into Divi/published
+│   (industry-agnostic pillar page for the Automated CRM product, same pattern as
+│   AI Voice Agent — canonical explainer the pricing cards link into. Live-demo
+│   CTA wires directly into the existing sitewide chat widget via its exposed
+│   window.lipToggle() function, rather than a new mechanism, since the widget
+│   is already active on every page. Not yet in header nav.)
+│
 ├─ About ( /about/ )                              ✅ live (published 2026-08-29, real "Magpie Rest Dawn" photo)
 │   (still not in main nav — add via Appearance → Menus)
 │
@@ -78,6 +85,9 @@ What links to what, and what's still pending. Full detail lives in `pages/seo-me
 | Home | AI Voice Agent | 🟡 written into `pages/home-page-section.html` (below pricing, as "Learn more" under the Call Aria block) — not live until re-pasted |
 | AI Receptionist for Tradies | AI Voice Agent | 🟡 written into `pages/ai-receptionist-for-tradies.html`'s Related section — not live until re-pasted |
 | AI Voice Agent | AI Receptionist for Tradies, Get Started, Home | 🟡 written into the new page's Related section — not live until page is published |
+| Home | Automated CRM | 🟡 pricing card title is now a link, same pattern as AI Voice Agent — not live until re-pasted |
+| AI Voice Agent | Automated CRM | 🟡 written into that page's Related section — not live until both pages are published |
+| Automated CRM | AI Voice Agent, AI Receptionist for Tradies, Get Started, Home | 🟡 written into the new page's Related section — not live until page is published |
 
 **Rule going forward:** a new page goes live already linked from somewhere — no orphan pages left for the sitemap alone to surface. Add a row here when a page is planned, before it goes live, same discipline as the focus-keyword check.
 
