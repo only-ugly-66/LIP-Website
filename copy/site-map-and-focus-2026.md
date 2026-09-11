@@ -29,6 +29,14 @@ lipservices.com.au/
 │   ├─ Invoice Reminder Automation for Tradies     ✅ live
 │   └─ Video Marketing for Tradies                 ✅ live
 │
+├─ AI Voice Agent ( /ai-voice-agent/ )             🔴 written 2026-09-11, not yet pasted into Divi/published
+│   (industry-agnostic pillar page for the Voice Agent product — the 4 trades pages
+│   are vertical-specific landing pages, this is the single canonical explainer they
+│   link back to. Houses the live "Call Aria Now" evaluation CTA above the fold —
+│   real tel: link to the Telnyx number on mobile, plain number to read off on
+│   desktop. Not yet in the header nav — that's a separate manual step in Divi's
+│   menu admin, Appearance → Menus, outside what a page module edit can do.)
+│
 ├─ About ( /about/ )                              ✅ live (published 2026-08-29, real "Magpie Rest Dawn" photo)
 │   (still not in main nav — add via Appearance → Menus)
 │
@@ -67,6 +75,9 @@ What links to what, and what's still pending. Full detail lives in `pages/seo-me
 | Jim's Franchise post | About | 🔴 not started — both pages are live now, this specific backlink still isn't built |
 | *(nothing yet)* | Jim's Franchise post | 🔴 not started — still nothing links to it from elsewhere |
 | *(nothing yet)* | About | 🔴 not started — still needs adding to main nav + Home |
+| Home | AI Voice Agent | 🟡 written into `pages/home-page-section.html` (below pricing, as "Learn more" under the Call Aria block) — not live until re-pasted |
+| AI Receptionist for Tradies | AI Voice Agent | 🟡 written into `pages/ai-receptionist-for-tradies.html`'s Related section — not live until re-pasted |
+| AI Voice Agent | AI Receptionist for Tradies, Get Started, Home | 🟡 written into the new page's Related section — not live until page is published |
 
 **Rule going forward:** a new page goes live already linked from somewhere — no orphan pages left for the sitemap alone to surface. Add a row here when a page is planned, before it goes live, same discipline as the focus-keyword check.
 
@@ -90,7 +101,9 @@ Used to categorise every piece of content the video/content machine produces —
 ### The 10-topic content queue (trades vertical, pain-first)
 Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-shaped) and `Video Script/video-topic-queue-2026.md` (Brief-shaped for Command Centre). **Sequencing: film first, blog repurposes the footage after** — matches the "cheapest content is content already written once" principle.
 
-**Direction change (2026-08-29/30, Robert):** the 4 live trades landing pages already cover the core pain points this queue targets (missed calls, cold quotes, unpaid invoices, low visibility) — more pain-point content from here hits diminishing returns. New topic ideation should pivot to the **CRM/backend time-saved angle** (what the automation actually gives someone back in their week) instead, which is still untouched ground. This queue's remaining rows aren't cancelled, just no longer the priority for *new* ideas. Also: the AI Voice Agent/Receptionist stays off-limits in any content, any format, until Telnyx's AU number approval actually lands — don't pitch it as live.
+**Direction change (2026-08-29/30, Robert):** the 4 live trades landing pages already cover the core pain points this queue targets (missed calls, cold quotes, unpaid invoices, low visibility) — more pain-point content from here hits diminishing returns. New topic ideation should pivot to the **CRM/backend time-saved angle** (what the automation actually gives someone back in their week) instead, which is still untouched ground.
+
+**Voice AI hold cleared (2026-09-10):** Telnyx's AU number is now active. The AI Voice Agent/Receptionist can be pitched as live in any content, any format — the earlier restriction no longer applies.
 
 | # | Topic (pain-first) | Funnels to | Pillar | Status |
 |---|---|---|---|---|
@@ -127,7 +140,7 @@ Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-sha
 
 **YouTube cleanup — done 2026-08-29:** all old off-brand clips (the ~20 Viddyoze template previews + the old Facebook-ad-methodology video) moved to Draft/unavailable. Channel is clean and ready for new uploads.
 
-**3 videos already cleared to post, sitting ready:** Founder — Systems (Jim's franchise story, recommended first), Founder — The Gap, First To Reply Wins — titles/descriptions drafted from real Whisper transcripts. A 4th, Founder — Tools, is held back because it name-drops the AI receptionist, which isn't live yet.
+**4 videos cleared to post, sitting ready:** Founder — Systems (Jim's franchise story, recommended first), Founder — The Gap, First To Reply Wins, Founder — Tools (name-drops the AI receptionist — cleared 2026-09-10 now the Telnyx number is live) — titles/descriptions drafted from real Whisper transcripts.
 
 **3 more talking-head videos produced 2026-08-31:** After hours calls, Just 3 Seconds, One missed call — all in "Ready to post," none posted yet.
 
