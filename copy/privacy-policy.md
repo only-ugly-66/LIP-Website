@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** 25 August 2026 (confirmed live at lipservices.com.au/privacy/ 2026-08-29)
+**Last updated:** 12 September 2026 — added the "Google API Limited Use compliance" section below for Google's OAuth verification requirements. Not yet pasted into the live Divi page — see the flag at the bottom of this file.
 
 LIP Services ("we", "us", "our", ABN 96 976 308 814) provides AI-powered marketing and business automation for Australian service businesses. This policy explains what personal information we collect, why, and what your rights are. It applies to visitors to lipservices.com.au, leads who contact us, and clients using our CRM, voice, and messaging services.
 
@@ -61,6 +61,17 @@ Under the Australian Privacy Principles, you can:
 
 To make a request, contact us using the details below. We'll respond within a reasonable timeframe, generally within 30 days.
 
+## Google API Limited Use compliance
+
+LIPS CRM connects to Google Calendar, with your explicit permission, to check availability and create booking events on the calendar you connect. This use is subject to the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements:
+
+- Google Calendar data is used only to check free/busy times and create, update, or cancel booking events on the connected calendar — for no other purpose.
+- We do not use data from Google Workspace APIs — raw, aggregated, or derived — to develop, train, or improve any AI/ML model, foundational or otherwise. LIP Services CRM also uses the Anthropic Claude API elsewhere (for lead handling and content), but that feature never receives or processes Google Calendar data — the two are fully separate.
+- We do not sell, rent, or transfer Google Workspace user data to any third party, including for advertising.
+- Google Calendar access can be revoked at any time from your Google Account permissions (myaccount.google.com/permissions).
+
+*"The use of raw or derived user data received from Workspace APIs will adhere to the Google User Data Policy, including the Limited Use requirements."*
+
 ## Security
 
 We take reasonable steps to protect your information, including access controls on our CRM and encrypted connections between our systems. No system is completely secure, and we can't guarantee absolute security of information transmitted to us.
@@ -78,3 +89,5 @@ ABN: 96 976 308 814
 
 ---
 *[ASSUMPTION FLAGGED FOR ROBERT: Resend status still needs confirming before this goes live (retention period is now settled — 18 months inactivity for leads, 60 days post-cancellation for former clients, 5 years for financial records per ATO). The "Overseas disclosure" section was added for APP 8 compliance since the policy invokes the Australian Privacy Principles by name — worth a quick once-over. Everything else is drawn directly from brain.txt's documented stack and data flows.]*
+
+*[FLAGGED FOR ROBERT, 2026-09-12: the new "Google API Limited Use compliance" section above is required by Google's OAuth verification team (rejection reason #2 on the lip-services-crm submission) and must be live at lipservices.com.au/privacy/ before you resubmit — it's not optional wording, it's a checked requirement. Paste the whole updated file into the Divi page that currently serves /privacy/. See `LIPS-CRM/docs/google-oauth-verification-resubmission.md` for the full resubmission checklist (video re-record, scope check, test credentials).]*
