@@ -37,6 +37,10 @@ We use the following service providers to run our systems. Your information may 
 
 We don't sell your personal information. We don't share it with anyone outside this list except where required by law.
 
+## Google user data
+
+Where a client connects their Google Calendar to power booking availability, the use of raw or derived data received from Google Workspace APIs adheres to the Google User Data Policy, including the Limited Use requirements. That data is used solely to check availability and create, reschedule, or cancel bookings — it is never used to train, improve, or develop any machine learning or AI model, and is never sold or transferred for advertising purposes.
+
 ## Overseas disclosure
 
 Several of the providers listed above are based overseas, primarily in the United States. This means your personal information may be handled or stored outside Australia as part of normal service delivery. We only work with providers that maintain their own security and privacy commitments, and we take reasonable steps to ensure your information is handled consistently with the Australian Privacy Principles even when it's processed offshore.
