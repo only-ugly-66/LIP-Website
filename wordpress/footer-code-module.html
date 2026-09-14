@@ -1,0 +1,119 @@
+<!-- ════════════════════════════════════════════════════════
+     BLOCK 11 — FOOTER
+     Replaces the existing Code module at the very bottom.
+     This version now also absorbs the separate Text module that currently
+     sits below it (copyright + legal links) — once this is pasted in, clear
+     that Text module's content in Divi so nothing duplicates.
+
+     What changed from the old version:
+     - Centered single-column stack replaced with a 3-column layout
+       (contact/logo info | quick links | legal) — the centered stack was
+       very likely why the footer read as bulky regardless of content volume.
+     - Phone number added (Aria's, 0480 088 984), matching the header.
+     - Real location added (Goroke, VIC — from the site's own schema data),
+       replacing the vague "Australia-Wide" as the only location signal.
+     - "Built with AI-assisted content creation" line removed — it was
+       confirming the exact suspicion a skeptical buyer already has rather
+       than earning credit for the disclosure. Relocated into About instead,
+       reframed as proof rather than confession.
+     - Legal links trimmed to Terms & Conditions, Privacy Policy, Disclaimers
+       (all real, maintained pages). Disclosures and Facebook Policy removed —
+       affiliate-marketing-era leftovers, not maintained, the clearest single
+       signal of the old theme still showing through.
+     - Stacks to one column on small screens (see media query below).
+
+     Update (2026-09-14): content now sits on a light panel instead of
+     relying on inherited grey-on-black text. The old version left most text
+     colour unset, inheriting whatever the dark Divi footer section
+     (background:#000000) provides — a light-grey that's genuinely hard to
+     read against black. Wrapping the content in its own light background
+     fixes that directly, and also means the text stays readable regardless
+     of what sits behind the footer section itself — including a logo image
+     background, if that's still being considered. The section background
+     can stay black (or become a logo image) without affecting legibility,
+     since the panel is opaque and sits on top of it either way.
+     ════════════════════════════════════════════════════════ -->
+
+<footer class="lip-footer">
+  <div class="lip-footer-panel">
+
+    <div class="lip-footer-grid">
+
+      <div class="lip-footer-col">
+        <div class="lip-footer-logo">LIP<span> </span>Services</div>
+        <p style="margin-bottom:8px">Local Internet Presence Services<br>AI Marketing &amp; Automation</p>
+        <p style="margin-bottom:4px"><a href="tel:+61480088984">📞 0480 088 984</a></p>
+        <p style="margin-bottom:4px"><a href="mailto:rob@lipservices.com.au">✉️ rob@lipservices.com.au</a></p>
+        <p style="margin-bottom:4px">Goroke, VIC — servicing Australia-wide</p>
+        <p style="margin-top:12px;font-size:12px;color:#64748b">ABN 96 976 308 814</p>
+      </div>
+
+      <div class="lip-footer-col">
+        <div class="lip-footer-heading">Quick Links</div>
+        <p><a href="https://lipservices.com.au/#services">Services</a></p>
+        <p><a href="https://lipservices.com.au/#who">Who We Help</a></p>
+        <p><a href="https://lipservices.com.au/about/">About</a></p>
+        <p><a href="https://lipservices.com.au/blog/">Blog</a></p>
+        <p><a href="https://lipservices.com.au/get-started/">Get Started</a></p>
+      </div>
+
+      <div class="lip-footer-col">
+        <div class="lip-footer-heading">Legal</div>
+        <p><a href="https://lipservices.com.au/terms">Terms &amp; Conditions</a></p>
+        <p><a href="https://lipservices.com.au/privacy">Privacy Policy</a></p>
+        <p><a href="https://lipservices.com.au/disclaimers">Disclaimers</a></p>
+        <!-- Replace src below with the logo's real Media Library URL once uploaded -->
+        <img src="https://lipservices.com.au/wp-content/uploads/2022/12/1.png" alt="LIP Services" class="lip-footer-col-logo">
+      </div>
+
+    </div>
+
+    <p class="lip-footer-copyright">© 2026 LIP Services. All rights reserved.</p>
+
+  </div>
+</footer>
+
+<style>
+  .lip-footer { text-align: left; padding: 24px; }
+  .lip-footer-panel {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  .lip-footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 32px;
+  }
+  .lip-footer-logo { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #1a1a2e; }
+  .lip-footer-heading {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #4f46e5;
+    margin-bottom: 10px;
+  }
+  .lip-footer-col p { margin: 0 0 6px 0; font-size: 14px; color: #334155; }
+  .lip-footer-col a { color: #334155; text-decoration: none; }
+  .lip-footer-col a:hover { color: #4f46e5; text-decoration: underline; }
+  .lip-footer-col-logo { display: block; max-width: 90px; height: auto; margin-top: 16px; }
+  .lip-footer-copyright {
+    text-align: center;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .lip-footer { padding: 16px; }
+    .lip-footer-panel { padding: 32px 24px; }
+    .lip-footer-grid { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+    .lip-footer-col-logo { margin-left: auto; margin-right: auto; }
+  }
+</style>

@@ -1,0 +1,212 @@
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .cnc-page {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+
+  .cnc-page .section-inner { max-width: 1100px; margin: 0 auto; }
+  .cnc-page section { padding: 80px 40px; }
+
+  .cnc-page .section-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #4f46e5; margin-bottom: 12px;
+  }
+  .cnc-page .section-title {
+    font-size: clamp(26px, 3.5vw, 40px); font-weight: 800;
+    letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 16px;
+  }
+  .cnc-page .section-sub { font-size: 17px; color: #64748b; max-width: 620px; line-height: 1.7; }
+
+  /* HERO */
+  .cnc-page .hero {
+    background: #0f0f1a; color: #fff; padding: 90px 40px 70px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cnc-page .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(79,70,229,0.35) 0%, transparent 70%);
+  }
+  .cnc-page .hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
+  .cnc-page .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(79,70,229,0.2); border: 1px solid rgba(79,70,229,0.4);
+    color: #a5b4fc; font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; padding: 6px 16px; border-radius: 20px; margin-bottom: 28px;
+  }
+  .cnc-page .hero h1 {
+    font-size: clamp(32px, 4.5vw, 52px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -1.2px; margin-bottom: 22px; color: #fff;
+  }
+  .cnc-page .hero h1 .accent { color: #818cf8; }
+  .cnc-page .hero p { font-size: 18px; color: #94a3b8; max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
+  .cnc-page .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .cnc-page .btn-primary {
+    background: #4f46e5; color: #fff; padding: 14px 32px; border-radius: 10px;
+    font-size: 16px; font-weight: 700; text-decoration: none;
+    transition: background 0.2s, transform 0.15s; display: inline-block;
+  }
+  .cnc-page .btn-primary:hover { background: #6366f1; transform: translateY(-1px); }
+  .cnc-page .btn-ghost {
+    background: transparent; color: #fff; padding: 14px 32px; border-radius: 10px;
+    font-size: 16px; font-weight: 600; text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .cnc-page .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+  /* PROBLEM */
+  .cnc-page .problem { background: #fafafa; }
+  .cnc-page .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; align-items: center; }
+  .cnc-page .problem-list { list-style: none; }
+  .cnc-page .problem-list li {
+    display: flex; gap: 14px; align-items: flex-start; padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0; font-size: 15px; color: #64748b;
+  }
+  .cnc-page .problem-list li:last-child { border-bottom: none; }
+  .cnc-page .x-icon {
+    width: 20px; height: 20px; background: #fee2e2; border-radius: 50%;
+    color: #ef4444; font-size: 12px; font-weight: 800; display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+  .cnc-page .solution-card { background: #0f0f1a; color: #fff; border-radius: 20px; padding: 40px; }
+  .cnc-page .solution-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 16px; line-height: 1.3; color: #fff; }
+  .cnc-page .solution-card p { color: #94a3b8; font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+  .cnc-page .solution-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cnc-page .tag {
+    background: rgba(79,70,229,0.2); border: 1px solid rgba(79,70,229,0.3);
+    color: #a5b4fc; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+  }
+
+  /* SERVICES */
+  .cnc-page .hub-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .cnc-page .hub-service-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .cnc-page .hub-service-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-2px); }
+  .cnc-page .hub-service-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 10px; }
+  .cnc-page .hub-service-card p { font-size: 14px; color: #64748b; line-height: 1.65; margin-bottom: 16px; }
+  .cnc-page .hub-service-card a { font-size: 13.5px; color: #4f46e5; font-weight: 700; text-decoration: none; }
+  .cnc-page .hub-service-card a:hover { text-decoration: underline; }
+
+  /* FINAL CTA */
+  .cnc-page .cta-final { background: #0f0f1a; text-align: center; padding: 90px 40px; }
+  .cnc-page .cta-final .section-label { color: #818cf8; }
+  .cnc-page .cta-final h2 { font-size: clamp(26px, 3.5vw, 40px); font-weight: 800; color: #fff; letter-spacing: -0.8px; margin-bottom: 16px; }
+  .cnc-page .cta-final p { font-size: 17px; color: #94a3b8; max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+
+  /* RELATED */
+  .cnc-page .related { padding: 40px 40px 60px; text-align: center; }
+  .cnc-page .related-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .cnc-page .related-links a {
+    font-size: 13.5px; color: #4f46e5; text-decoration: none; font-weight: 600;
+    border: 1px solid #e2e8f0; padding: 8px 16px; border-radius: 20px;
+  }
+  .cnc-page .related-links a:hover { background: #eef2ff; }
+
+  @media (max-width: 768px) {
+    .cnc-page section { padding: 56px 20px; }
+    .cnc-page .hero { padding: 64px 20px 48px; }
+    .cnc-page .problem-grid { grid-template-columns: 1fr; }
+    .cnc-page .hub-services-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="cnc-page">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🎯 Coaches &amp; Consultants</div>
+    <h1>People Are Researching You <span class="accent">Before the Discovery Call</span></h1>
+    <p>Business coaches, marketing consultants and HR advisors sell on personal authority. If your booking process looks like a one-person hustle, that's the first thing a prospect notices.</p>
+    <div class="hero-ctas">
+      <a href="https://crm.lipservices.com.au/book/bab3db00-923c-4a0c-a9c4-fdf3a1a7567e" target="_blank" rel="noopener" class="btn-primary">Book a Free Strategy Call</a>
+      <a href="https://lipservices.com.au/get-started/?src=coaches-consultants-hub" class="btn-ghost">Get Your Free Plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="problem-grid">
+      <div>
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">The wrong first impression, before you've even said a word.</h2>
+        <p class="section-sub">You're selling authority and judgement. A clunky booking process or a missed call undercuts that before the discovery call has even started.</p>
+        <ul class="problem-list" style="margin-top:32px">
+          <li><div class="x-icon">✕</div> Discovery-call bookings handled ad hoc, with no consistent process</li>
+          <li><div class="x-icon">✕</div> No-shows that quietly disappear instead of getting a follow-up</li>
+          <li><div class="x-icon">✕</div> Content and authority-building sitting on the to-do list, never actually done</li>
+          <li><div class="x-icon">✕</div> A missed call reading as "too busy to matter" rather than "in demand"</li>
+        </ul>
+      </div>
+      <div class="solution-card">
+        <h3>A booking experience that matches the authority you're selling.</h3>
+        <p>AI systems that make first contact feel professional, follow up automatically when someone doesn't show, and keep the content flowing that builds your reputation.</p>
+        <div class="solution-tags">
+          <span class="tag">Professional Booking</span>
+          <span class="tag">No-Show Follow-Up</span>
+          <span class="tag">Authority Content</span>
+          <span class="tag">Automated Nurture</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">How We Help</div>
+    <h2 class="section-title">Three systems, one less thing<br/>on your plate.</h2>
+    <p class="section-sub">Each one stands alone, or works together as a full system covering the whole client journey.</p>
+    <div class="hub-services-grid">
+      <div class="hub-service-card">
+        <h3>AI Voice Agent</h3>
+        <p>A professional booking experience for discovery calls that matches the authority you're selling — not a missed call and a guessed-at callback.</p>
+        <a href="https://lipservices.com.au/ai-voice-agent/">Learn more →</a>
+      </div>
+      <div class="hub-service-card">
+        <h3>Automated CRM</h3>
+        <p>Automated no-show follow-up and re-engagement, so a missed call isn't a lost client.</p>
+        <a href="https://lipservices.com.au/automated-crm/">Learn more →</a>
+      </div>
+      <div class="hub-service-card">
+        <h3>Video &amp; Content Creation</h3>
+        <p>Authority-building video, blog posts, and newsletters that do the convincing before you ever get on a call, all built into the same CRM running your bookings.</p>
+        <a href="https://lipservices.com.au/get-started/?src=coaches-consultants-video">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-final" id="get-started">
+  <div class="section-label">Get Started</div>
+  <h2>Ready for a booking process that looks the part?</h2>
+  <p>Book a free 30-minute strategy call, or start with your free plan and see exactly what this looks like for your business.</p>
+  <div class="hero-ctas">
+    <a href="https://crm.lipservices.com.au/book/bab3db00-923c-4a0c-a9c4-fdf3a1a7567e" target="_blank" rel="noopener" class="btn-primary">Book a Free Call</a>
+    <a href="https://lipservices.com.au/get-started/?src=coaches-consultants-hub" class="btn-ghost">Get Your Free Plan →</a>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="section-label">Explore Further</div>
+  <div class="related-links">
+    <a href="https://lipservices.com.au/ai-voice-agent/">AI Voice Agent</a>
+    <a href="https://lipservices.com.au/automated-crm/">Automated CRM</a>
+    <a href="https://lipservices.com.au/ai-office-manager/">AI Automated Office Manager</a>
+    <a href="https://lipservices.com.au/about/">About LIP Services</a>
+    <a href="https://lipservices.com.au/">Back to Home</a>
+  </div>
+</section>
+
+</div>

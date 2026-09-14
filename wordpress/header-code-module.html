@@ -1,0 +1,65 @@
+<!-- ════════════════════════════════════════════════════════
+     HEADER TOP BAR — replaces the entire contents of the header row's
+     Code module (et_pb_code_0_tb_header), sitting alongside the menu module.
+
+     This replaces header-top-bar.php, which wrapped this same content in a
+     PHP function + add_action('wp_body_open', ...) — that pattern only makes
+     sense if the module actually executes PHP, in which case it fires this
+     bar a second time at the top of <body>, separate from the module's own
+     position in the header row. That's the "two Get Started" bug. This
+     version is plain HTML/CSS instead, matching the footer's Code module
+     (BLOCK 11 — FOOTER) exactly, which already renders correctly with no
+     PHP wrapper. Delete header-top-bar.php — this file replaces it.
+     ════════════════════════════════════════════════════════ -->
+
+<div class="lip-top-bar">
+  <div class="lip-top-bar-contact">
+    <a class="lip-top-bar-call" href="tel:+61480088984">
+      <span class="call-link">📞 Call Aria: 0480 088 984</span>
+      <span class="call-number">📞 0480 088 984</span>
+    </a>
+    <a href="mailto:rob@lipservices.com.au">✉️ rob@lipservices.com.au</a>
+  </div>
+  <a class="lip-top-bar-cta" href="https://lipservices.com.au/get-started/?src=header-bar">Get Started — Free AI Marketing Plan →</a>
+</div>
+
+<style>
+  .lip-top-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 30px;
+    font-size: 14px;
+    flex-wrap: wrap;
+  }
+  .lip-top-bar-contact { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+  .lip-top-bar-contact a, .lip-top-bar-call {
+    color: #0f0f1a;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .lip-top-bar-contact a:hover, .lip-top-bar-call:hover { color: #4f46e5; }
+  .lip-top-bar-cta {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .lip-top-bar-cta:hover { color: #0f0f1a; }
+
+  /* same mobile-vs-desktop number pattern already used on the AI Voice Agent
+     page: a tappable link on touch devices, plain text to read off on desktop,
+     since tel: links do nothing useful on a laptop */
+  .call-link { display: none; }
+  .call-number { display: inline; }
+  @media (hover: none) and (pointer: coarse) {
+    .call-link { display: inline-block; }
+    .call-number { display: none; }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .lip-top-bar { justify-content: center; text-align: center; }
+  }
+</style>
