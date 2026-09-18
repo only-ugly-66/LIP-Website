@@ -41,8 +41,7 @@ Non-page site assets deployed to or embedded in WordPress.
 | File | Purpose | Status |
 |---|---|---|
 | `chat-proxy.php` | Backend proxy for Aria chatbot API calls | ✅ Live — reads key from .htaccess SetEnv |
-| `divi-chat-embed.html` | Divi block embed for Aria chatbot | ✅ Live |
-| `chat-agent.html` | Aria chatbot frontend UI | ✅ Live — HTML injected directly into Divi Theme Options → Body |
+| `divi-chat-embed.html` | Aria chatbot frontend UI + Divi block embed, both in one file | ✅ Live — the whole file is pasted into Divi Theme Options → Integrations → "Add code to the `<body>` tag," sitewide |
 | `knowledge-base.js` | Shared AI knowledge base used by Aria | ✅ Live — deployed to `/wp-content/uploads/lip/knowledge-base.js` |
 | `voice-agent-prompt.md` | Prompt reference for the voice agent | Reference doc |
 | `jump-links-toc-template.html` | Reusable "In This Article" TOC snippet | Template — stays put, not a page (see `copy/plan-of-attack-2026.md` step 4) |
@@ -57,6 +56,7 @@ Superseded homepage/landing-page variants, sorted out 2026-08-17 after finding 5
 | `landing-page-contact-section.html` | Its commit called it "the live deployment path" but the live site has since diverged (no form, different pricing) — Robert edited live content directly in Divi without syncing back |
 | `landing-page-v2.html` | Orphaned, correct pricing but old title tag and unclear provenance — unreferenced in current docs |
 | `cowork-blog-extraction-prompt-superseded.md` | Manual Cowork prompt for extracting meta/keyword/image-prompt from a finished post — superseded 2026-08-20 when `generateBlogPost` (Command Centre) started returning all of it in the same generation pass |
+| `chat-agent-superseded.html` | Standalone "AI Chat Agent Demo" page with its own separate `CHAT_RULES` that had already drifted from the real live widget — not linked or embedded anywhere live (confirmed with Robert 2026-09-18), this repo's own `CLAUDE.md` had incorrectly documented it as live for some time |
 
 ---
 
@@ -90,6 +90,6 @@ Projects/
 
 ## Connected Systems
 
-- **Aria chatbot** — Claude API-powered chat agent embedded on the site. All files in `wordpress/` — `chat-agent.html` (frontend), `knowledge-base.js` (shared knowledge), `chat-proxy.php` (API proxy), `divi-chat-embed.html` (embed block).
+- **Aria chatbot** — Claude API-powered chat agent embedded on the site. Live files in `wordpress/` — `divi-chat-embed.html` (frontend UI + embed block, one file, pasted whole into Divi), `knowledge-base.js` (shared knowledge), `chat-proxy.php` (API proxy). `archive/chat-agent-superseded.html` was a demo page with its own drifted copy of the rules — not live, don't use it as a reference for what Aria actually says on the site.
 - **LIP Command Centre** — the internal platform is separate from this website. Don't mix app files with website files.
 - **Client questionnaire** — lives in `LIP-Command-Centre/public/docs/client-questionnaire.html` (served by the app, not the website).
