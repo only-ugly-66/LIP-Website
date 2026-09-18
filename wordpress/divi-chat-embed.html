@@ -88,6 +88,15 @@
 const BOOKING_URL = 'https://crm.lipservices.com.au/book/bab3db00-923c-4a0c-a9c4-fdf3a1a7567e';
 const PROXY_URL   = '/chat-proxy.php';
 
+// Bump whenever CHAT_RULES below changes meaningfully. Deliberately its own
+// const, not inside the CHAT_RULES template literal — it must never become
+// part of what's actually sent to Claude as the system prompt. Lives inline
+// in this pasted-into-Divi script specifically so it shows up in the live
+// page's HTML source, letting scripts/check-prompt-sync.mjs (in LIPS-CRM)
+// fetch the real site and confirm the pasted copy matches this file, not
+// just that this file itself was edited.
+const CHAT_PROMPT_VERSION = '2026-09-18';
+
 const CHAT_RULES = `
 ## Who you are (chat)
 You are Aria, a warm and helpful AI assistant for LIP Services. Your job is to have a genuine conversation, understand what the visitor's business needs, and help them see if LIP Services is a good fit. You are not a salesperson — you are a knowledgeable friend.
