@@ -1,10 +1,19 @@
 // ══════════════════════════════════════════════════════════════
 // LIP Services — Shared AI Knowledge Base
 // ══════════════════════════════════════════════════════════════
-// Used by: chat-agent.html (Aria), divi-chat-embed.html
+// NOT loaded live by anything as of 2026-09-18. Website chat moved
+// server-side (LIPS-CRM's lib/ariaChatPrompt.js now holds its own ported
+// copy of this content) after chat-agent.html's and divi-chat-embed.html's
+// old client-side setup turned out to be an open, unauthenticated relay to
+// Claude. chat-agent.html itself is archived (archive/chat-agent-superseded.html).
 //
-// TO UPDATE: Edit this file only. Both agents pick up changes
-// automatically. Do not duplicate this content into either agent.
+// This file is now a reference document only: the one place to edit
+// pricing/services/proof-points by hand, then manually copy into
+// pages/home-page-section.html and voice-agent-prompt.md — see PRICING's
+// comment below for the exact propagation steps. The live copy uploaded to
+// /wp-content/uploads/lip/knowledge-base.js is no longer fetched by
+// anything and can be deleted from WordPress media if wanted (harmless to
+// leave too — it's just unreferenced).
 // ══════════════════════════════════════════════════════════════
 
 const KNOWLEDGE_BASE = `
@@ -64,8 +73,12 @@ Setup fees are one-time. Monthly covers platform costs, monitoring, updates and 
 
 > SOURCE OF TRUTH: this file (knowledge-base.js) is the one place to update when pricing changes.
 > After editing here, also update: pages/home-page-section.html (live homepage — landing-page-v2.html
-> is archived, this replaced it) and wordpress/voice-agent-prompt.md (Telnyx voice agent — re-paste
-> into Telnyx's dashboard after editing).
+> is archived, this replaced it), wordpress/voice-agent-prompt.md (Telnyx voice agent — re-paste
+> into Telnyx's dashboard after editing), and (new as of 2026-09-18) LIPS-CRM/lib/ariaChatPrompt.js's
+> KNOWLEDGE_BASE constant (website chat — auto-deploys via Vercel once pushed, no re-paste needed).
+> This 4th manual-sync point is exactly the kind of drift the planned centralized org-data schema
+> (client_profiles + org_services) is meant to eliminate — once that's built, this whole propagation
+> list goes away for chat, and shrinks for voice too if Telnyx's write API gets wired up.
 > Also double-check the actual Stripe Price IDs (STRIPE_PRICE_CRM/VOICE/BUNDLE in LIPS-CRM) still
 > match — Stripe is the real billing source and isn't wired to read from this file.
 

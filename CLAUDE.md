@@ -40,9 +40,9 @@ Non-page site assets deployed to or embedded in WordPress.
 
 | File | Purpose | Status |
 |---|---|---|
-| `chat-proxy.php` | Backend proxy for Aria chatbot API calls | ✅ Live — reads key from .htaccess SetEnv |
-| `divi-chat-embed.html` | Aria chatbot frontend UI + Divi block embed, both in one file | ✅ Live — the whole file is pasted into Divi Theme Options → Integrations → "Add code to the `<body>` tag," sitewide |
-| `knowledge-base.js` | Shared AI knowledge base used by Aria | ✅ Live — deployed to `/wp-content/uploads/lip/knowledge-base.js` |
+| `chat-proxy.php` | Backend for the chat widget's lead capture only (`lead`/`lead_capture` actions) | ✅ Live — its old `chat` action (forwarded a caller-supplied system prompt straight to Claude, an open unauthenticated relay) was removed 2026-09-18 |
+| `divi-chat-embed.html` | Aria chatbot frontend UI + Divi block embed, both in one file | ✅ Live — the whole file is pasted into Divi Theme Options → Integrations → "Add code to the `<body>` tag," sitewide. No longer holds the system prompt (moved server-side, see below) |
+| `knowledge-base.js` | Reference doc for pricing/services/proof-points — hand-edited, then manually copied into other places | Reference doc only as of 2026-09-18, not loaded live by anything. See its own header for the current propagation list (now includes `LIPS-CRM/lib/ariaChatPrompt.js`) |
 | `voice-agent-prompt.md` | Prompt reference for the voice agent | Reference doc |
 | `jump-links-toc-template.html` | Reusable "In This Article" TOC snippet | Template — stays put, not a page (see `copy/plan-of-attack-2026.md` step 4) |
 
@@ -90,6 +90,6 @@ Projects/
 
 ## Connected Systems
 
-- **Aria chatbot** — Claude API-powered chat agent embedded on the site. Live files in `wordpress/` — `divi-chat-embed.html` (frontend UI + embed block, one file, pasted whole into Divi), `knowledge-base.js` (shared knowledge), `chat-proxy.php` (API proxy). `archive/chat-agent-superseded.html` was a demo page with its own drifted copy of the rules — not live, don't use it as a reference for what Aria actually says on the site.
+- **Aria chatbot** — Claude API-powered chat agent embedded on the site. As of 2026-09-18 the actual conversation is server-side in LIPS-CRM (`app/api/aria/chat/route.js` + `lib/ariaChatPrompt.js`), not this repo — this repo only has the widget UI (`wordpress/divi-chat-embed.html`, pasted whole into Divi) and its lead-capture backend (`wordpress/chat-proxy.php`, `lead`/`lead_capture` actions only now). `knowledge-base.js` is a reference doc for hand-editing pricing/services, not loaded live by anything. `archive/chat-agent-superseded.html` was a demo page with its own drifted copy of the rules — not live, don't use it as a reference for what Aria actually says on the site.
 - **LIP Command Centre** — the internal platform is separate from this website. Don't mix app files with website files.
 - **Client questionnaire** — lives in `LIP-Command-Centre/public/docs/client-questionnaire.html` (served by the app, not the website).

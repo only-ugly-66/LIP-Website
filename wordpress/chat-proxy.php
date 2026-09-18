@@ -5,11 +5,15 @@
 // Upload this file to your WordPress root: /public_html/chat-proxy.php
 // It will be accessible at: https://lipservices.com.au/chat-proxy.php
 //
-// SETUP: Replace YOUR_API_KEY_HERE with your Anthropic API key.
+// Only handles lead / lead_capture now (2026-09-18) -- the live chat
+// conversation itself runs server-side in LIPS-CRM (see
+// app/api/aria/chat/route.js), not here. No Anthropic key needed.
 // ══════════════════════════════════════════════════════════════
 
 // ── Configuration ────────────────────────────────────────────
-define('ANTHROPIC_API_KEY',    getenv('ANTHROPIC_API_KEY') ?: 'YOUR_API_KEY_HERE');
+// ANTHROPIC_API_KEY removed 2026-09-18 -- the 'chat' action that used it
+// was deleted (see the note below), and neither remaining action
+// (lead / lead_capture) ever calls Claude.
 define('NOTIFICATION_EMAIL',   'rob@lipservices.com.au');
 define('ALLOWED_ORIGIN',       'https://lipservices.com.au');
 define('LIPS_CRM_URL',         'https://crm.lipservices.com.au');
