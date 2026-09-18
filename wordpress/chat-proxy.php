@@ -48,50 +48,18 @@ if (!$data || !isset($data['action'])) {
     exit;
 }
 
-// ── Route: chat message ───────────────────────────────────────
-if ($data['action'] === 'chat') {
-
-    if (empty($data['messages']) || !is_array($data['messages'])) {
-        http_response_code(400);
-        echo json_encode(['error' => 'Missing messages']);
-        exit;
-    }
-
-    $payload = json_encode([
-        'model'      => 'claude-sonnet-4-6',
-        'max_tokens' => 380,
-        'system'     => $data['system'] ?? '',
-        'messages'   => array_slice($data['messages'], -24),
-    ]);
-
-    $ch = curl_init('https://api.anthropic.com/v1/messages');
-    curl_setopt_array($ch, [
-        CURLOPT_POST           => true,
-        CURLOPT_POSTFIELDS     => $payload,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 30,
-        CURLOPT_HTTPHEADER     => [
-            'Content-Type: application/json',
-            'x-api-key: '          . ANTHROPIC_API_KEY,
-            'anthropic-version: 2023-06-01',
-        ],
-    ]);
-
-    $response  = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $curl_err  = curl_error($ch);
-    curl_close($ch);
-
-    if ($curl_err) {
-        http_response_code(500);
-        echo json_encode(['error' => 'Connection failed']);
-        exit;
-    }
-
-    http_response_code($http_code);
-    echo $response;
-    exit;
-}
+// ── Route: chat message — REMOVED 2026-09-18 ────────────────────
+// This forwarded whatever `system` string the browser sent straight to
+// Claude on ANTHROPIC_API_KEY, with no real check (the Origin check above
+// only ever sets a response header, it never rejects a request) — an
+// open, unauthenticated relay billed to Robert's own API key, confirmed
+// live via a plan-check. The live conversation now happens server-side in
+// LIPS-CRM's /api/aria/chat, which builds its own system prompt from the
+// org's settings and never accepts one from the caller. See
+// LIPS-CRM/lib/ariaChatPrompt.js and wordpress/divi-chat-embed.html's
+// CHAT_API_URL. This ANTHROPIC_API_KEY constant is no longer used by this
+// file at all — kept defined above only so a future action added here
+// doesn't silently break if it's still referenced.
 
 // ── Route: lead capture ───────────────────────────────────────
 if ($data['action'] === 'lead') {

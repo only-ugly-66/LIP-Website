@@ -81,49 +81,27 @@
   </button>
 </div>
 
-<script src="/wp-content/uploads/lip/knowledge-base.js"></script>
 <script>
 (function(){
 
 const BOOKING_URL = 'https://crm.lipservices.com.au/book/bab3db00-923c-4a0c-a9c4-fdf3a1a7567e';
-const PROXY_URL   = '/chat-proxy.php';
+const PROXY_URL   = '/chat-proxy.php';       // still used for lead_capture only — see lipSubmitLead()
+const CHAT_API_URL = 'https://crm.lipservices.com.au/api/aria/chat';
 
-// Bump whenever CHAT_RULES below changes meaningfully. Deliberately its own
-// const, not inside the CHAT_RULES template literal — it must never become
-// part of what's actually sent to Claude as the system prompt. Lives inline
-// in this pasted-into-Divi script specifically so it shows up in the live
-// page's HTML source, letting scripts/check-prompt-sync.mjs (in LIPS-CRM)
-// fetch the real site and confirm the pasted copy matches this file, not
-// just that this file itself was edited.
-const CHAT_PROMPT_VERSION = '2026-09-18';
-
-const CHAT_RULES = `
-## Who you are (chat)
-You are Aria, a warm and helpful AI assistant for LIP Services. Your job is to have a genuine conversation, understand what the visitor's business needs, and help them see if LIP Services is a good fit. You are not a salesperson — you are a knowledgeable friend.
-
-## Conversation approach
-- Your first priority is their name and best contact number. Until you have both, stay warm but keep steering back to getting them — don't move on to business talk yet.
-- Once you have a name and number, find out what kind of business they run — ask naturally, not as a form
-- Understand their biggest challenge: getting leads, converting them, missing calls, too much admin?
-- Match 1 or 2 relevant services to their situation — never list all services unprompted
-- When there is genuine interest, actively offer to get them booked in — say the words "book a strategy call with Rob" so a real booking link automatically appears below your message. Never write out a URL yourself, you don't know the real one and the app adds it for you.
-- If booking isn't the right fit for them right now, that's fine — you already have their name and number, so Rob can follow up when he's free
-- Near the end of the conversation, politely ask for their email too — e.g. "One more thing, mind if I grab your email as well so Rob can send over some info?" If they don't give it, that's fine, don't push — just move on
-- If they share their email, acknowledge it warmly
-
-## Chat style rules — always follow
-- Maximum 3 sentences per message. No exceptions.
-- Never use bullet points or numbered lists — write in natural sentences only.
-- One idea per message. If you have two things to say, pick the more important one and let the conversation continue.
-- Warm and conversational. Like a helpful friend, not a salesperson.
-- Plain Australian English. No jargon, no corporate language.
-- Never be pushy.
-
-## If you don't know something
-Say Rob would be the best person to answer that on a call — and offer to help them book one.
-`;
-
-const SYSTEM = (typeof KNOWLEDGE_BASE !== 'undefined' ? KNOWLEDGE_BASE : '') + CHAT_RULES;
+// The conversation itself now happens server-side in the CRM (2026-09-18) —
+// see LIPS-CRM/app/api/aria/chat/route.js and lib/ariaChatPrompt.js. This
+// widget no longer builds or holds a system prompt at all; it only sends
+// this org's public widget key + the message history. That closes a real
+// hole found via a plan-check: this file used to build the full system
+// prompt (rules + entire knowledge base) in the browser and hand it to
+// chat-proxy.php, which forwarded whatever it was given straight to Claude
+// on Robert's API key with no real check — anyone could see the whole
+// knowledge base in page source, and worse, supply their own system prompt
+// entirely. CHAT_WIDGET_KEY is deliberately NOT a secret in the sense
+// aria_webhook_secret is — it's safe to be public, same trust model as a
+// booking link — see LIPS-CRM's add_chat_widget_key.sql for why a separate
+// value was used instead of reusing aria_webhook_secret.
+const CHAT_WIDGET_KEY = 'REPLACE_WITH_SETTINGS.CHAT_WIDGET_KEY';
 
 let msgs          = [];
 let busy          = false;
@@ -252,14 +230,14 @@ window.addEventListener('pagehide', lipSubmitLead);
 window.addEventListener('beforeunload', lipSubmitLead);
 
 async function lipCall(){
-  var res = await fetch(PROXY_URL, {
+  var res = await fetch(CHAT_API_URL, {
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ action:'chat', system:SYSTEM, messages:msgs.slice(-24) })
+    body: JSON.stringify({ widgetKey:CHAT_WIDGET_KEY, messages:msgs.slice(-24) })
   });
   if(!res.ok){ var e=await res.json().catch(function(){return {};}); throw new Error(e.error||'HTTP '+res.status); }
   var data = await res.json();
-  return data.content[0].text;
+  return data.reply;
 }
 
 function lipBookingClicked(){
