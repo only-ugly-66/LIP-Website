@@ -93,3 +93,18 @@ Projects/
 - **Aria chatbot** — Claude API-powered chat agent embedded on the site. As of 2026-09-18 the actual conversation is server-side in LIPS-CRM (`app/api/aria/chat/route.js` + `lib/ariaChatPrompt.js`), not this repo — this repo only has the widget UI (`wordpress/divi-chat-embed.html`, pasted whole into Divi) and its lead-capture backend (`wordpress/chat-proxy.php`, `lead`/`lead_capture` actions only now). `knowledge-base.js` is a reference doc for hand-editing pricing/services, not loaded live by anything. `archive/chat-agent-superseded.html` was a demo page with its own drifted copy of the rules — not live, don't use it as a reference for what Aria actually says on the site.
 - **LIP Command Centre** — the internal platform is separate from this website. Don't mix app files with website files.
 - **Client questionnaire** — lives in `LIP-Command-Centre/public/docs/client-questionnaire.html` (served by the app, not the website).
+
+---
+
+## Prior-art check (before any build estimated > half a day)
+Added 2026-10-03. Applies to new features, modules and integrations, not bug fixes.
+
+Before writing code, search GitHub and npm (and WordPress plugins for the website) for existing solutions. Report:
+- Top 2–3 candidates: name, stars, last commit date, licence, open issues
+- Only consider for ADOPT/ADAPT: MIT/Apache/BSD licence, commit in last 6 months, actively maintained
+- Verdict: ADOPT (use as-is), ADAPT (fork or wrap part of it), BORROW (study its approach/schema, write our own), or BUILD (nothing useful) — with a one-line reason
+- For BORROW: name the specific idea worth taking (schema, retry pattern, edge-case handling), not just the repo. Rewrite the approach in our own code — never paste code from GPL/AGPL or unlicensed repos
+- Flag any candidate needing a paid tier or hosted service
+
+Wait for Robert's go-ahead before building.
+Never install a package, plugin or Claude Code skill without stating what it does and where it's from (official repo/registry only — never a link from a DM or social post).
