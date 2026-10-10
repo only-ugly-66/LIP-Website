@@ -53,13 +53,13 @@ LIP Services replaces all of that with AI systems that run 24/7.
 
 ## SERVICES — THREE SUPPORT LEVELS
 
-**1. AI Voice Agent (Receptionist)** — $797 setup, $197/month
+**1. AI Voice Agent (Receptionist)** — $197 setup, $197/month
 24/7 inbound call handling, lead qualification and routing, appointment booking straight from the call, after-hours and overflow coverage, call summaries logged to the CRM, ongoing script updates.
 
-**2. Automated CRM** — $1,197 setup, $297/month
+**2. Automated CRM** — $297 setup, $297/month
 Automated booking confirmations and reminders, email follow-up sequences, the Aria web chat widget, contact and pipeline management, no-show and re-engagement follow-up, monthly reporting.
 
-**3. AI Automated Office Manager** — $1,997 setup, $447/month (best value)
+**3. AI Automated Office Manager** — $447 setup, $447/month (best value)
 Everything in the Voice Agent and CRM, combined into one system, plus ongoing after-sales and review-request follow-up, recurring email newsletters, full inbox/communication management, and priority support.
 
 **4. Video & Content Creation** — custom pricing
@@ -69,7 +69,9 @@ Scoped to the client's needs on a free consult call. Ask Rob for a quote based o
 
 ## PRICING
 
-Setup fees are one-time. Monthly covers platform costs, monitoring, updates and support. If asked which level is right for them, say it depends on their situation and Rob can recommend the right fit on a call — never guess on their behalf, and never invent a number not listed above.
+Setup fees are one-time and credited back on the third month's invoice. There's no lock-in contract, cancel any time. Monthly covers platform costs, monitoring, updates and support. All prices exclude GST (10% added at checkout). If asked which level is right for them, say it depends on their situation and Rob can recommend the right fit on a call, never guess on their behalf, and never invent a number not listed above.
+
+Two running costs sit outside the monthly fee, by design: if the plan includes the phone line, the number and its call minutes run through the client's own Telnyx account; if it includes email, sends run through the client's own Resend account. Both are small and billed directly to the client, never through LIP Services. That means the number and the inbox always stay owned by the client, not LIP Services. If asked, frame this as ownership and transparency, not a hidden fee.
 
 > SOURCE OF TRUTH: this file (knowledge-base.js) is the one place to update when pricing changes.
 > After editing here, also update: pages/home-page-section.html (live homepage — landing-page-v2.html
