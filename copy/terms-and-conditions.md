@@ -1,6 +1,6 @@
 # Terms & Conditions
 
-**Last updated:** 25 August 2026 (confirmed live at lipservices.com.au/terms/ 2026-08-29)
+**Last updated:** 12-October-2026 (confirmed live at lipservices.com.au/terms/ 2026-10-12)
 
 These terms govern your use of lipservices.com.au and any services you purchase from LIP Services ("we", "us", "our", ABN 96 976 308 814). By using our website or engaging our services, you agree to these terms.
 
@@ -60,7 +60,7 @@ These terms are governed by the laws of Victoria, Australia.
 ## Contact us
 
 "LIP Services" - Local Internet Presence Services
-Phone: 0422 717 798
+Sales and enquiries: 0480 088 984
 Email: rob@lipservices.com.au
 ABN: 96 976 308 814
 

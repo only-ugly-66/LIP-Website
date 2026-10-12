@@ -155,7 +155,7 @@ Same list lives in two places by design — `blog-topic-ideas-2026.md` (blog-sha
 | TikTok | tiktok.com/@l.i.p.services | Awareness + traffic | ✅ pasted live 2026-08-29 | Not posting yet |
 | Google Business Profile | (Maps CID `18419614376604528516`) | Local intent, near-ready-to-book | ✅ pasted live 2026-08-29 | 🔴 Profile accurate, but nothing's been posted to it — see `ai-discovery-strategy-2026.md` |
 
-**NAP used everywhere:** LIP Services (Local Internet Presence Services) · 📞 0422 717 798 · lipservices.com.au — bios are live now, worth a spot-check that this matches exactly on every profile (this is also the AEO Trust-layer check in `ai-discovery-strategy-2026.md`, not independently re-verified yet).
+**NAP used everywhere:** LIP Services (Local Internet Presence Services) · 📞 0480 088 984 · lipservices.com.au — bios are live now, worth a spot-check that this matches exactly on every profile (this is also the AEO Trust-layer check in `ai-discovery-strategy-2026.md`, not independently re-verified yet).
 
 **YouTube cleanup — done 2026-08-29:** all old off-brand clips (the ~20 Viddyoze template previews + the old Facebook-ad-methodology video) moved to Draft/unavailable. Channel is clean and ready for new uploads.
 

@@ -14,7 +14,7 @@ Managed in WP Admin → RankMath SEO → Titles & Meta → **Local SEO** tab. Ap
 |---|---|---|
 | Business name | Local Internet Presence Services (alt: LIP Services) | 🔒 confirmed 2026-08-16 |
 | Address | 14 Pollard Drive, Leopold, VIC 3224, Australia | ⚠️ Robert updating — old address, decision pending |
-| Phone | +61 422 717 798 | 🔒 confirmed 2026-08-16 |
+| Phone | +61 480 088 984 | 🔒 confirmed 2026-08-16 |
 | Email (schema) | rob@lipservices.com.au | 🔒 confirmed correct 2026-08-17 |
 | sameAs | facebook.com/localinternetpresenceservices · instagram.com/l.i.p.services · youtube.com/@LipservicesAuSite · linkedin.com/company/6419689 · threads.com/@l.i.p.services · tiktok.com/@l.i.p.services · google.com/maps?cid=18419614376604528516 | ✅ Pasted Live 2026-08-19 — all 7 platforms confirmed in RankMath Local SEO sameAs field (Facebook, Instagram, YouTube, LinkedIn, Threads, TikTok, Google Business Profile). Google Business Profile CID verified by decoding the real Maps place URL (`0xff9f9daf2930ef84` → decimal `18419614376604528516`) — an earlier CID guess (`4837786786`) was wrong and was replaced before pasting. No active X/Twitter profile. No Pinterest. Not yet re-checked against the live site (🔒 confirm next time you're verifying pages). |
 

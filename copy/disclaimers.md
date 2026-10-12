@@ -1,6 +1,6 @@
 # Disclaimers
 
-**Last updated:** 25 August 2026
+**Last updated:** 12-October-2026 (confirmed live at lipservices.com.au/disclaimers/ 2026-10-12)
 
 ## General
 
@@ -33,7 +33,7 @@ Nothing on this site constitutes legal, financial, or tax advice. Seek advice fr
 ## Contact us
 
 **LIP Services** - Local Internet Presence Services
-Phone: 0422 717 798
+Sales and enquiries: 0480 088 984
 Email: rob@lipservices.com.au
 ABN: 96 976 308 814
 

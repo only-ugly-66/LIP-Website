@@ -2,7 +2,7 @@
 
 **What this is:** Drafted bio/description text per platform so every profile reads consistently. Same core identity everywhere (name, phone, link); tone adjusted per platform per the table in `plan-of-attack-2026.md` step 86.
 
-**NAP used everywhere:** LIP Services (Local Internet Presence Services) · 📞 0422 717 798 · lipservices.com.au
+**NAP used everywhere:** LIP Services (Local Internet Presence Services) · 📞 0480 088 984 · lipservices.com.au
 
 **Status key:** 📝 Drafted here, not yet pasted · ✅ Pasted live
 
@@ -16,7 +16,7 @@
 
 **About / long description:**
 > LIP Services builds AI systems that answer every call, chase every quote, and follow up every invoice — so tradies stop losing jobs to being flat-out on the tools. Enterprise-grade automation at a small business price. Free plan, no obligation.
-> 📞 0422 717 798 · lipservices.com.au
+> 📞 0480 088 984 · lipservices.com.au
 
 ---
 
@@ -26,7 +26,7 @@
 
 > AI that answers your calls & chases your quotes 🛠️
 > Never miss another job.
-> 📞 0422 717 798
+> 📞 0480 088 984
 > 👇 Get your free plan
 
 ---
@@ -37,7 +37,7 @@
 
 > AI that answers your calls & chases your quotes 🛠️
 > Never miss another job.
-> 📞 0422 717 798
+> 📞 0480 088 984
 
 ---
 
@@ -47,7 +47,7 @@
 
 > We help tradies stop losing jobs to missed calls, cold quotes, and unpaid invoices. This channel breaks down the AI systems we build for real trade businesses — AI receptionist, quote follow-up, invoice reminders, and video marketing that runs itself.
 >
-> 📞 0422 717 798
+> 📞 0480 088 984
 > 🔗 lipservices.com.au
 
 ---
@@ -56,7 +56,7 @@
 **Tone:** Tradie-facing, punchy | **Status:** ✅ Pasted live 2026-08-29
 **Limit:** 80 characters
 
-> AI that answers calls & chases quotes for tradies 🛠️ 📞 0422 717 798
+> AI that answers calls & chases quotes for tradies 🛠️ 📞 0480 088 984
 
 ---
 
@@ -71,7 +71,7 @@
 > LIP Services helps local and professional service businesses replace manual admin with AI systems — an always-on AI receptionist, automated quote follow-up, invoice reminders, and lead generation — built to deliver enterprise-level marketing capability at a small business price point.
 >
 > Based in Victoria, Australia, serving local and professional service businesses nationally.
-> 📞 0422 717 798 · lipservices.com.au
+> 📞 0480 088 984 · lipservices.com.au
 
 ---
 

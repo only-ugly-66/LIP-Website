@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** 25 August 2026 (confirmed live at lipservices.com.au/privacy/ 2026-08-29)
+**Last updated:** 12-October-2026 (confirmed live at lipservices.com.au/privacy/ 2026-10-12)
 
 LIP Services ("we", "us", "our", ABN 96 976 308 814) provides AI-powered marketing and business automation for Australian service businesses. This policy explains what personal information we collect, why, and what your rights are. It applies to visitors to lipservices.com.au, leads who contact us, and clients using our CRM, voice, and messaging services.
 
@@ -76,8 +76,8 @@ We may update this policy as our services change. The "last updated" date at the
 ## Contact us
 
 **LIP Services**
-Phone: 0422 717 798
-Email: [see website contact form]
+Sales and enquiries: 0480 088 984
+Email (privacy requests and personal contact): rob@lipservices.com.au
 ABN: 96 976 308 814
 
 ---
